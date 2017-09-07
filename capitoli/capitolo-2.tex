@@ -3,11 +3,20 @@
 % !TEX root = ../tesi.tex
 
 %**************************************************************
-\chapter{Processi e metodologie}
-\label{cap:processi-metodologie}
+\chapter{Descrizione dello stage}
+\label{cap:descrizione-stage}
 %**************************************************************
 
-\intro{Brevissima introduzione al capitolo}\\
+\intro{descrive in dettaglio lo stage. Ne specifica il progetto da svolgere contestualizzandolo nella realtà aziendale, i requisiti richiesti, gli obiettivi da raggiungere e la pianificazione iniziale.}\\
 
 %**************************************************************
-\section{Processo sviluppo prodotto}
+\section{Introduzione al progetto e contestualizzazione}
+Nel contesto del supply chain management in cui l’azienda opera, ha assunto una gran rilevanza l’organizzazione dei turni di singoli lavoratori o di squadre di lavoratori, in relazione alle competenze da loro possedute e richieste dai vari lavori da portare a compimento. \\
+Il progetto di stage si prefiggeva l'obiettivo di estendere per la risoluzione dei problemi di scheduling il \emph{\gls{framework}framework}\glsfirstoccur\ aziendale e scrivere un'applicazione che lo utilizzasse andando a risolvere un problema specifico. L'obiettivo finale è utilizzare il framework per lo scheduling delle squadre dei meccanici, tuttavia è stato deciso che, per cominciare a studiare i problemi di scheduling e la fattibilità di risolverli con metodi \emph{\gls{algeur}euristici}\glsfirstoccur\ e \emph{\gls{meteur} meta-euristici}\glsfirstoccur, fosse opportuno cominciare da un problema più semplice: l'organizzazione dei turni nei casinò. L'organizzazione dei turni dei meccanici sarà il naturale proseguimento di questo progetto, e la complessità maggiore dovuta allo schedulazione di individui singoli inseriti in un gruppo anch'esso da schedulare sarà supportata dal framework di base, robusto e già testato, sviluppato all'interno del progetto di stage. \\
+Il problema della schedulazione dei turni all'interno dei casinò è stato scelto come problema di partenza in quanto comunque di interesse per l'azienda, che ha contatti con un manager de ``The Hippodrome Casino'' di Londra, il quale ha sottoposto il problema in quanto, al momento, lo scheduling viene fatto completamente a mano, dovendo tenere conto di numerosi vincoli e variabili. \\
+Il framework aziendale da estendere è programmato in C\texttt{++} ed offre una solida base per l'implementazione di algoritmi di ottimizzazione. Consiste di librerie per l'utilizzo di grafi, di algoritmi euristici di tipo \emph{\gls{greedy}greedy}\glsfirstoccur\ e di meta-euristiche, ad esempio \emph{\gls{tabu}Tabu Search}\glsfirstoccur, che il l'estensione del framework andrà a sfruttare.
+%**************************************************************
+\section{Requisiti e obiettivi}
+
+%**************************************************************
+\section{Pianificazione}

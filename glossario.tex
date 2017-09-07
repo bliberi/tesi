@@ -10,10 +10,13 @@
 \newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
     {uml}{UML}{Unified Modeling Language}
 
+%\newacronym[description={\glslink{schedg}{Scheduling}}]
+%   {sched}{Scheduling}{Scheduling}
+
 %**************************************************************
 % Glossario
 %**************************************************************
-%\renewcommand{\glossaryname}{Glossario}
+\renewcommand{\glossaryname}{Glossario}
 
 \newglossaryentry{apig}
 {
@@ -29,4 +32,93 @@
     text=UML,
     sort=uml,
     description={in ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
+}
+
+\newglossaryentry{probsched}
+{
+    name=Problema di Schedulazione/Scheduling,
+    text=,
+    sort=problemi di scheduling,
+    description={Un problema di schedulazione definisce le variabili decisionali, una regione ammissibile entro la quale le variabili decisionali possono variare e una funzione obiettivo per determinare la migliore \emph{\gls{sched}schedulazione}\glsfirstoccur\ ammissibile}
+}
+
+\newglossaryentry{sched}
+{
+    name=Schedulazione/Scheduling,
+    text=,
+    sort=schedulazione,
+    description={La schedulazione è una forma di processo decisionale che consiste nell'allocare risorse finite in modo tale che un dato obiettivo venga ottimizzato, sincronizzando e tempificando la sequenza delle operazioni}
+}
+
+\newglossaryentry{algeur}
+{
+    name=Algoritmo euristico,
+    text=,
+    sort=algoritmo euristico,
+    description={In matematica e informatica è un particolare tipo di algoritmo progettato per risolvere un problema di ricerca operativa più velocemente (qualora i metodi classici siano troppo lenti) o per trovare una soluzione approssimata (qualora i metodi classici falliscano nel trovare una soluzione esatta). Il risultato viene ottenuto cercando di equilibrare ottimalità, completezza, accuratezza e velocità di esecuzione. \\
+    Possono essere applicati quando la soluzione è data selezionando il miglior sottoinsieme di un dato insieme di elementi e sono costruttivi, ovvero partono da una soluzione vuota e ad ogni iterazione aggiungono un elemento applicando dei criteri di selezione\footcite{degio:dispensa}}
+}
+
+\newglossaryentry{greedy}
+{
+    name=Algoritmo Greedy,
+    text=,
+    sort=algoritmo greedy,
+    description={Un algoritmo greedy è un algoritmo euristico che ad ogni iterazione compie una scelta ``golosa'', ovvero la migliore (in termini di impatto sulla funzione obiettivo) da prendere in quel momento}
+}
+
+\newglossaryentry{meteur}
+{
+    name=Meta-euristica,
+    text=,
+    sort=meta-euristica,
+    description={In matematica e informatica è una strategia per esplorare in maniera efficiente lo spazio delle soluzioni per trovare delle soluzioni vicine all'ottimo e scappare dagli ottimi locali. Non sono algoritmi costruttivi e necessitano quindi di una soluzione per poterne trovarne un'altra migliore}
+}
+
+\newglossaryentry{tabu}
+{
+    name=Tabu Search,
+    text=,
+    sort=Tabu Search,
+    description={La Tabu Search è una tecnica meta-euristica utilizzata per la soluzione di numerosi problemi di ottimizzazione, tra cui problemi di scheduling. Essa consiste nel partire da una soluzione iniziale ed eseguire una serie di ``mosse'' che portano ad una nuova soluzione all'interno del vicinato per la quale la funzione obiettivo f assume un valore migliore del valore attuale. Per sfuggire gli ottimi locali, la Tabu Search permette un certo numero di mosse peggioranti rendendo tabù, proibite, le ultime mosse eseguite per evitare di ``tornare indietro''}
+}
+
+\newglossaryentry{supply-chain}
+{
+    name=Supply chain,
+    text=,
+    sort=supply chain,
+    description={La supply chain (in italiano, ``catena di distribuzione'') è il sistema di organizzazioni, persone, attività, informazioni e risorse coinvolte nel portare un prodotto o un servizio dal fornitore al cliente}
+}
+
+\newglossaryentry{nphard}
+{
+    name=NP-Hard,
+    text=,
+    sort=nphard,
+    description={vd. \emph{\gls{teoria-compl}teoria della complessità computazionale}\glsfirstoccur}
+}
+
+\newglossaryentry{teoria-compl}
+{
+    name=Teoria della complessità computazionale,
+    text=,
+    sort=teoria,
+    description={In informatica, la teoria della complessità computazionale è una branca della teoria della computabilità che studia le risorse minime necessarie (principalmente tempo di calcolo e memoria) per la risoluzione di un problema. I problemi sono classificati in differenti classi di complessità, in base all'efficienza del migliore algoritmo noto in grado di risolvere quello specifico problema:
+    \begin{itemize}
+        \item $\mathcal{P}$ (\textit{Polynomial-time problems}) - Contiene tutti i problemi decisionali che possono essere risolti da una macchina di Turing deterministica in tempo polinomiale. La classe $\mathcal{P}$ può essere caratterizzata come quella classe di problemi per i quali si è in grado di trovare una soluzione in tempo polinomiale.
+        \item $\mathcal{NP}$ (\textit{Nondeterministic polynomial-time problems}) - Contiene tutti i problemi decisionali che possono essere risolti da una macchina di Turing non deterministica in tempo polinomiale. La classe $\mathcal{NP}$ può essere caratterizzata come quella classe di problemi per i quali non si è in grado di trovare una soluzione in tempo polinomiale, ma si è in grado di verificare se una possibile soluzione è effettivamente tale in tempo polinomiale. \\ In particolare, $\mathcal{P} \subseteq\ \mathcal{NP}$.
+        \item $\mathcal{NP-C}$ o NP-Completi - Sono i più difficili problemi nella classe $\mathcal{NP}$: se si trovasse un algoritmo in grado di risolvere in tempo polinomiale un qualsiasi problema in $\mathcal{NP-C}$, allora si potrebbe usarlo per risolvere in tempo polinomiale ogni problema in $\mathcal{NP}$. \\ In particolare, $\mathcal{NP-C} \subseteq\ \mathcal{NP}$.
+        \item $\mathcal{H}$ o NP-Hard (\textit{Nondeterministic polynomial-time hard problems}) -  Classe di problemi (non limitata ai soli problemi di decisione, ma estesa anche ai problemi di ottimizzazione, ad esempio) che può essere definita informalmente come la classe dei problemi non meno difficili dei problemi $\mathcal{NP-C}$, che a loro volta sono per definizione i più difficili della classe $\mathcal{NP}$. Si noti che non è sempre vero che $\mathcal{H} \subseteq\ \mathcal{NP}$.
+    \end{itemize}
+    (\cite{wiki:teoria-compl}.)
+    }
+}
+
+\newglossaryentry{framework}
+{
+    name=Framework,
+    text=,
+    sort=framework,
+    description={Nello sviluppo software, il framework è un'architettura logica di supporto su cui un software può essere progettato e realizzato; la sua funzione è quella di creare una infrastruttura generale, lasciando al programmatore il contenuto vero e proprio dell'applicazione.}
 }
