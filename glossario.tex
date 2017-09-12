@@ -7,11 +7,11 @@
 \newacronym[description={\glslink{apig}{Application Program Interface}}]
     {api}{API}{Application Program Interface}
 
-\newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
-    {uml}{UML}{Unified Modeling Language}
+\newacronym{uml}{UML}{Unified Modeling Language}
 
-%\newacronym[description={\glslink{schedg}{Scheduling}}]
-%   {sched}{Scheduling}{Scheduling}
+\newacronym{ampl}{AMPL}{A Mathematical Programming Language}
+
+\newacronym{ide}{IDE}{Integrated Developement Environment}
 
 %**************************************************************
 % Glossario
@@ -37,32 +37,41 @@
 \newglossaryentry{probsched}
 {
     name=Problema di Schedulazione/Scheduling,
-    text=,
+    text=problemi di scheduling,
     sort=problemi di scheduling,
-    description={Un problema di schedulazione definisce le variabili decisionali, una regione ammissibile entro la quale le variabili decisionali possono variare e una funzione obiettivo per determinare la migliore \emph{\gls{sched}schedulazione}\glsfirstoccur\ ammissibile}
+    description={Un problema di schedulazione definisce le variabili decisionali, una regione ammissibile entro la quale le variabili decisionali possono variare e una funzione obiettivo per determinare la migliore \emph{\gls{sched}}\glsfirstoccur\ ammissibile}
 }
 
 \newglossaryentry{sched}
 {
     name=Schedulazione/Scheduling,
-    text=,
+    text=schedulazione,
     sort=schedulazione,
     description={La schedulazione è una forma di processo decisionale che consiste nell'allocare risorse finite in modo tale che un dato obiettivo venga ottimizzato, sincronizzando e tempificando la sequenza delle operazioni}
+}
+
+\newglossaryentry{metodo-esatto}
+{
+    name=Metodo esatto,
+    text=metodo esatto,
+    sort=metodo esatto,
+    description={I metodi di risoluzione dei problemi di ottimizzazione combinatoria ricadono in due categorie: i metodi esatti e metodi euristici (vd. \textit{Algoritmo euristico}). I primi sono metodi che riescono a fornire una soluzione ottima, a differenza dei secondi che riescono a fornire una soluzione ammissibile ma senza la garanzia che sia ottimale.\footcite{degio:dispensa}
+    Esempi di algoritmi esatti sono il simplesso o il branch-and-bound}
 }
 
 \newglossaryentry{algeur}
 {
     name=Algoritmo euristico,
-    text=,
+    text=euristici,
     sort=algoritmo euristico,
-    description={In matematica e informatica è un particolare tipo di algoritmo progettato per risolvere un problema di ricerca operativa più velocemente (qualora i metodi classici siano troppo lenti) o per trovare una soluzione approssimata (qualora i metodi classici falliscano nel trovare una soluzione esatta). Il risultato viene ottenuto cercando di equilibrare ottimalità, completezza, accuratezza e velocità di esecuzione. \\
+    description={I metodi di risoluzione dei problemi di ottimizzazione combinatoria ricadono in due categorie: i metodi esatti (vd. \textit{Metodo esatto}) e metodi euristici. In matematica e informatica un metodo euristico è un particolare tipo di algoritmo progettato per risolvere un problema di ricerca operativa più velocemente (qualora i metodi esatti siano troppo lenti) o per trovare una soluzione approssimata (qualora i metodi esatti falliscano nel trovare una soluzione esatta). Il risultato viene ottenuto cercando di equilibrare ottimalità, completezza, accuratezza e velocità di esecuzione. \\
     Possono essere applicati quando la soluzione è data selezionando il miglior sottoinsieme di un dato insieme di elementi e sono costruttivi, ovvero partono da una soluzione vuota e ad ogni iterazione aggiungono un elemento applicando dei criteri di selezione\footcite{degio:dispensa}}
 }
 
 \newglossaryentry{greedy}
 {
     name=Algoritmo Greedy,
-    text=,
+    text=greedy,
     sort=algoritmo greedy,
     description={Un algoritmo greedy è un algoritmo euristico che ad ogni iterazione compie una scelta ``golosa'', ovvero la migliore (in termini di impatto sulla funzione obiettivo) da prendere in quel momento}
 }
@@ -70,7 +79,7 @@
 \newglossaryentry{meteur}
 {
     name=Meta-euristica,
-    text=,
+    text=meta-euristici,
     sort=meta-euristica,
     description={In matematica e informatica è una strategia per esplorare in maniera efficiente lo spazio delle soluzioni per trovare delle soluzioni vicine all'ottimo e scappare dagli ottimi locali. Non sono algoritmi costruttivi e necessitano quindi di una soluzione per poterne trovarne un'altra migliore}
 }
@@ -78,7 +87,7 @@
 \newglossaryentry{tabu}
 {
     name=Tabu Search,
-    text=,
+    text=Tabu Search,
     sort=Tabu Search,
     description={La Tabu Search è una tecnica meta-euristica utilizzata per la soluzione di numerosi problemi di ottimizzazione, tra cui problemi di scheduling. Essa consiste nel partire da una soluzione iniziale ed eseguire una serie di ``mosse'' che portano ad una nuova soluzione all'interno del vicinato per la quale la funzione obiettivo f assume un valore migliore del valore attuale. Per sfuggire gli ottimi locali, la Tabu Search permette un certo numero di mosse peggioranti rendendo tabù, proibite, le ultime mosse eseguite per evitare di ``tornare indietro''}
 }
@@ -86,7 +95,7 @@
 \newglossaryentry{supply-chain}
 {
     name=Supply chain,
-    text=,
+    text=supply chain,
     sort=supply chain,
     description={La supply chain (in italiano, ``catena di distribuzione'') è il sistema di organizzazioni, persone, attività, informazioni e risorse coinvolte nel portare un prodotto o un servizio dal fornitore al cliente}
 }
@@ -94,15 +103,15 @@
 \newglossaryentry{nphard}
 {
     name=NP-Hard,
-    text=,
+    text=NP-Hard,
     sort=nphard,
-    description={vd. \emph{\gls{teoria-compl}teoria della complessità computazionale}\glsfirstoccur}
+    description={vd. \emph{\gls{teoria-compl}}\glsfirstoccur}
 }
 
 \newglossaryentry{teoria-compl}
 {
     name=Teoria della complessità computazionale,
-    text=,
+    text=teoria della complessità computazionale,
     sort=teoria,
     description={In informatica, la teoria della complessità computazionale è una branca della teoria della computabilità che studia le risorse minime necessarie (principalmente tempo di calcolo e memoria) per la risoluzione di un problema. I problemi sono classificati in differenti classi di complessità, in base all'efficienza del migliore algoritmo noto in grado di risolvere quello specifico problema:
     \begin{itemize}
@@ -118,7 +127,98 @@
 \newglossaryentry{framework}
 {
     name=Framework,
-    text=,
+    text=framework,
     sort=framework,
-    description={Nello sviluppo software, il framework è un'architettura logica di supporto su cui un software può essere progettato e realizzato; la sua funzione è quella di creare una infrastruttura generale, lasciando al programmatore il contenuto vero e proprio dell'applicazione.}
+    description={Nello sviluppo software, il framework è un'architettura logica di supporto su cui un software può essere progettato e realizzato; la sua funzione è quella di creare una infrastruttura generale, lasciando al programmatore il contenuto vero e proprio dell'applicazione}
+}
+
+\newglossaryentry{amplg}
+{
+    name=\gls{ampl},
+    text=AMPL,
+    sort=ampl,
+    description={È un linguaggio ad alto livello per descrivere e risolvere grossi e complicati problemi di programmazione matematica (per esempio problemi di ottimizzazione e di scheduling)}
+}
+
+\newglossaryentry{ideg}
+{
+    name=\gls{ide},
+    text=IDE,
+    sort=ide,
+    description={È un software che, in fase di programmazione, aiuta il programmatore nello sviluppo del codice sorgente fornendo un controllo sintassi in tempo reale e una serie di strumenti e funzionalità di supporto allo sviluppo e al debugging}
+}
+
+\newglossaryentry{drive}
+{
+    name=Google Drive,
+    text=Google Drive,
+    sort=google drive,
+    description={Servizio fornito da Google in ambiente cloud computing che offre funzioni di condivisione e hosting di file, permettendone la modifica collaborativa su uno spazio gratuito di 15 GB.}
+}
+
+\newglossaryentry{repository}
+{
+    name=Repository,
+    text=repository,
+    sort=repository,
+    description={Ambiente di un sistema informativo in cui vengono gestiti i metadati attraverso tabelle relazionali. L'insieme di tabelle, regole e motori di calcolo tramite cui si gestiscono i metadati prende il nome di metabase.}
+}
+
+\newglossaryentry{git}
+{
+    name=Git,
+    text=Git,
+    sort=git,
+    description={Software di controllo versione distribuito utilizzabile da interfaccia a riga di comando. È uno dei pù diffusi strumenti di controllo versione.}
+}
+
+\newglossaryentry{mod-incr}
+{
+    name=Modello incrementale,
+    text=modello incrementale,
+    sort=modello incrementale,
+    description={In ingegneria del software, è una metodologia di sviluppo software in cui il cliente identifica, a grandi linee, i requisiti fondamentali e quelli desiderabili del prodotto software che vuole ottenere; viene poi deciso il numero di incrementi da effettuare, tenendo conto del fatto che ogni singolo incremento costituisce un sottoinsieme delle funzionalità del prodotto software. Una volta che gli incrementi sono stati identificati, si definiscono in dettaglio i requisiti che devono essere soddisfatti dagli incrementi prima di procedere allo sviluppo.}
+}
+
+\newglossaryentry{agile}
+{
+    name=Agile,
+    text=agile,
+    sort=agile,
+    description={In ingegneria del software, è un insieme di metodi di sviluppo del software emersi a partire dai primi anni 2000 e fondati su insieme di principi comuni, direttamente o indirettamente derivati dai principi del ``Manifesto per lo sviluppo agile del software''\footcite{manifesto}. Tale manifesto si può riassumere in quattro punti:
+        \begin{enumerate}
+            \item le persone e le interazioni sono più importanti dei processi e degli strumenti;
+            \item è più importante avere software funzionante che documentazione;
+            \item bisogna collaborare con i clienti oltre che rispettare il contratto;
+            \item bisogna essere pronti a rispondere ai cambiamenti oltre che aderire alla pianificazione.
+        \end{enumerate}
+    Un esempio di metodo di sviluppo di tipo agile è il metodo \emph{\gls{scrum}}\glsfirstoccur}
+}
+
+\newglossaryentry{scrum}
+{
+    name=Scrum,
+    text=scrum,
+    sort=scrum,
+    description={Metodo di sviluppo software che rientra fra i metodi agile. Prevede di dividere il progetto in blocchi rapidi di lavoro (Sprint) alla fine di ciascuno dei quali creare un incremento del software. Esso indica come definire i dettagli del lavoro da fare nell'immediato futuro e prevede vari meeting con caratteristiche precise per creare occasioni di ispezione e controllo del lavoro svolto}
+}
+
+\newglossaryentry{milestone}
+{
+    name=Milestone,
+    text=milestones,
+    sort=milestone,
+    description={Traguardi intermedi ed importanti nello svolgimento di un progetto; sono spesso fissati in fase di pianificazione}
+}
+
+\newglossaryentry{gantt}
+{
+    name=Diagramma di Gantt,
+    text=,
+    sort=diagramma,
+    description={Tipo di diagrammi molto usato per le attività di amministrazione di progetti poiché
+        permettono una rappresentazione visuale di facile comprensione della durata delle attività
+        che verranno svolte e le loro dipendenze. I Diagrammi di Gantt sono molto importanti
+        per la gestione delle risorse di un progetto e per la creazione di un calendario delle attività
+        che sia efficace}
 }

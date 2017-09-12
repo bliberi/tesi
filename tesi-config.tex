@@ -49,6 +49,12 @@
 \setlength{\parindent}{14pt}   % larghezza rientro della prima riga
 \setlength{\parskip}{0pt}   % distanza tra i paragrafi
 
+\newlength{\offsetpage}
+\setlength{\offsetpage}{1.0cm}
+\newenvironment{widepage}
+    {\begin{adjustwidth}{-\offsetpage}{-\offsetpage}%
+        \addtolength{\textwidth}{2\offsetpage}}%
+    {\end{adjustwidth}}
 
 %**************************************************************
 % Impostazioni di biblatex
