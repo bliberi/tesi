@@ -113,4 +113,149 @@ Tutti i grafici presenti in questa sezione sono stati prodotti sul sito di Wolfr
  \clearpage
 \subsection{Progettazione}
 %**************************************************************
-\section{Esiti dei test}
+\section{Testing}
+\subsection{Costruzione dei test}
+Per eseguire i test in serie, è stato prodotto uno script Python che esegue trenta volta il programma, il quale genera una nuova istanza di input, costruisce gli oggetti, esegue l'algoritmo greedy producendo uno scheduling e poi procede con l'ottimizzare il numero di lavoratori necessari al riempimento dello scheduling. Lo script Python tiene traccia, per ogni esecuzione, del tempo impiegato e di tutti gli input e output per poter poi elaborare i dati creando quattro tipi di grafici.
+    \paragraph{Executions} Grafico che mette in relazione il tempo di esecuzione con la grandezza iniziale dell’input (numero tavoli, numero di lavoratori) e di quanto si riesce a migliorare l’input tramite le iterazioni miglioranti. Viene messa in evidenza la media di tutti i valori. Ad esempio:
+    \begin{figure}[!h]
+        \begin{widepage}
+            \includegraphics[width=14.9cm,keepaspectratio]{../immagini/executions.png}
+            \caption{Grafico prodotto dai test: Executions}
+        \end{widepage}
+    \end{figure}
+    \FloatBarrier
+    \noindent
+    È un grafico prodotto su trenta esecuzioni dell’algoritmo. Il tempo di esecuzione medio è 5.387s, il numero medio di postazioni è 27.5, il numero medio lavoratori all’inizio è di circa 46 (+68.3\% rispetto al numero di postazioni) mentre, dopo le iterazioni miglioranti, il numero medio di lavoratori è di circa 37 (+35.5\% rispetto al numero di tavoli, valore che ha un riscontro nel numero effettivo di lavoratori nel casinò di Londra).
+    
+    \paragraph{Tests} Sono tre grafici diversi che mostrano l'attuazione del modello probabilistico negli input generati dal programma. \\
+    \\ Il primo mostra la distribuzione dei livelli sulle postazioni e sui lavoratori. Ricordando che la distribuzione dei livelli sulle postazioni deve seguire la distribuzione discreta uniforme, mentre la distribuzione dei livelli sui lavoratori deve seguire la distribuzione normale (gaussiana), su trenta esecuzioni dell’algoritmo sono state prodotte le seguenti distribuzioni, che confermano il modello probabilistico:
+    \begin{figure}[!h]
+            \centering
+            \includegraphics[width=0.9\textwidth,keepaspectratio]{../immagini/tests_levels.png}
+            \caption{Grafico prodotto dai test: Tests (livelli)}
+    \end{figure}
+    \FloatBarrier
+    \noindent
+    Il secondo grafico mostra la distribuzione della conoscenza dei giochi sulle postazioni e sui lavoratori (limitandosi ai dealer, in quanto dealer-inspector e inspector conoscono tutti i giochi). Ricordando che la frequenza dei giochi deve essere il 50\% per il gioco base // e il 25\% per BJ e PG, su trenta esecuzioni dell’algoritmo sono state prodotte le seguenti distribuzioni, che confermano il modello probabilistico:
+    \begin{figure}[!h]
+            \centering
+            \includegraphics[width=0.9\textwidth,keepaspectratio]{../immagini/tests_games.png}
+            \caption{Grafico prodotto dai test: Tests (giochi)}
+    \end{figure}
+    \FloatBarrier
+    \noindent
+    Il terzo e ultimo grafico mostra la distribuzione della conoscenza dei giochi sui dealer, suddivisi per livello. Ricordando che la probabilità che un dealer conosca un gioco è direttamente proporzionale al suo livello secondo una distribuzione di Bernoulli (quindi, un livello 1 ha probabilità del 90\% di conoscere un gioco, livello 2 probabilità 80\%, etc..), su trenta esecuzioni dell’algoritmo sono state prodotte le seguenti distribuzioni, che confermano il modello probabilistico:
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.9\textwidth,keepaspectratio]{../immagini/distr_games.png}
+        \caption{Grafico prodotto dai test: Tests (giochi per livelli)}
+    \end{figure}
+    \FloatBarrier
+    \noindent
+    
+    \paragraph{Exec n} Infine per ogni esecuzione viene creato un grafico (quindi in tutto, per un'esecuzione dello script, vengono creati trenta grafici) per mostrare la bontà degli input prodotti. Questi grafici mostrano il numero di lavoratori capaci di lavorare in ogni tavolo secondo quando prodotto dal livello probabilistico. Essi possono essere di due tipi:
+    
+    \begin{figure}[!h]
+        \begin{widepage}
+            \centering
+            \includegraphics[width=.49\textwidth]{../immagini/exec_0.png}\hfil
+            \includegraphics[width=.49\textwidth]{../immagini/exec_1.png}
+            \caption{Grafici prodotti dai test: Exec n}
+        \end{widepage}
+    \end{figure}
+    \FloatBarrier
+    \noindent
+    Nel grafico a sinistra, si può notare come i lavoratori prodotti dall’input non fossero ben distribuiti per ogni tavolo; il grafico è rosso perché l’algoritmo non ha trovato una soluzione ammissibile, utilizzando Giovannino.\\
+    Nel grafico a destra, invece, si può notare come i lavoratori prodotti dall’input fossero ben distribuiti per ogni tavolo; il grafico è verde perché l’algoritmo ha trovato una soluzione ammissibile.
+   
+   \subsection{Analisi dei risultati}
+   Sono stati eseguiti tre test prestazionali modificando lievemente i parametri del modello per variare la generazione degli input, al fine di provare a rispecchiare diversi tipi di situazioni che possono presentarsi all'interno del casinò e per analizzare le reazioni dell'algoritmo.
+   \subsubsection{Primo test prestazionale}
+   Il test viene eseguito sulla distribuzione uniforme dei livelli delle postazioni, tuttavia nei tavoli limitando ad un numero basso (tra 0 e tavoli/10) i livelli molto alti (sotto il tre).\\
+   Questa istanza di test è stata ripetuta tre volte per 30 esecuzioni ciascuna.\\
+   I grafici sulle distribuzioni di giochi e livelli hanno confermato le premesse.
+       \begin{table}[!h]
+           \caption{Risultati del primo test prestazionale}
+           \label{tab:test_1}
+           \begin{tabularx}{\textwidth}{|X|c|c|c|}
+               \hline
+               \thead{} & \thead{Test 1} & \thead{Test 2} & \thead{Test 3}\\
+               \hline
+               Presenza di Giovannino & 4 / 30 & 8 / 30 & 7 / 30 \\
+               \hline
+               Tempo di esecuzione medio & 3.410s & 3.662s	 & 4.526s \\
+               \hline
+               Percentuale di lavoratori iniziali &+58.9\%&+57.8\%&+60.2\% \\
+               \hline
+               Percentuale di lavoratori ottimizzati &+35.5\%&+34.3\%&+35.2\%
+                \\
+               \hline
+           \end{tabularx}
+       \end{table}%
+    \FloatBarrier
+    \noindent
+    L'analisi delle soluzioni non ammissibili e degli input che le hanno generate hanno evidenziato che in un caso non era stata trovata una soluzione ammissibile a causa di una cattiva rotazione delle limitate risorse disponibili per coprire alcune postazioni; risolvendo il problema a mano, con un'oculata rotazione era possibile creare una soluzione ammissibile, compiendo però delle scelte che vanno contro la scelta greedy. Si riconosce il limite dell'euristica. \\
+    Negli altri casi, le soluzioni non ammissibili sono dovute a un input iniziale non ben distribuito.
+    
+   \subsubsection{Secondo test prestazionale}
+   Il test viene eseguito sulla seguente distribuzione dei livelli delle postazioni: i tavoli di livello alto (sotto il 3) sono limitati ad un numero basso (tra 0 e tavoli/10); gli altri tavoli sono tutti di livello molto basso (8).\\
+   Questa istanza di test è stata ripetuta tre volte per 30 esecuzioni ciascuna.\\
+   I grafici sulle distribuzioni di giochi e livelli hanno confermato le premesse.
+   \begin{table}[!h]
+       \caption{Risultati del secondo test prestazionale}
+       \label{tab:test_2}
+       \begin{tabularx}{\textwidth}{|X|c|c|c|}
+           \hline
+           \thead{} & \thead{Test 1} & \thead{Test 2} & \thead{Test 3}\\
+           \hline
+           Presenza di Giovannino & 5 / 30 & 6 / 30 & 7 / 30 \\
+           \hline
+           Tempo di esecuzione medio & 4.197s & 5.387s	 & 4.205s \\
+           \hline
+           Percentuale di lavoratori iniziali &+68.2\%&+68.3\%&+66.1\% \\
+           \hline
+           Percentuale di lavoratori ottimizzati &+35.6\%&+34.5\%&+36.3\%
+           \\
+           \hline
+       \end{tabularx}
+   \end{table}%
+   \FloatBarrier
+   \noindent
+   L'analisi delle soluzioni non ammissibili non ha rivelato criticità, in quanto sono dovute a un input iniziale non ben distribuito.\\
+   Tuttavia è stata osservata un'anomalia all'interno di una soluzione non ammissibile: i lavoratori 38 e 52 al tavolo BJ7 si alternano in modo anomalo e entrambi rimangono in pausa per moltissimi turni consecutivi. Ciò è dovuto al fatto che sono inspector di livello 1 e c'è solo un pit di livello 1. L'algoritmo preferisce mettere altri lavoratori meno qualificati nei pit di livello 2-3, perciò dopo che 38 o 52 vanno in pausa vengono raramente assegnati ad un altro pit. Ciò preclude loro la possibilità di tornare a lavorare in BJ7, perché dopo la pausa devono cambiare per forza tavolo. A ciò è dovuto anche l'utilizzo di Giovannino. Si riconosce il limite dell'euristica. \\
+    
+   \subsubsection{Terzo test prestazionale}
+   Il test viene eseguito sulla seguente distribuzione dei livelli delle postazioni: i tavoli di livello alto (sotto il 3) sono limitati ad un numero basso (tra 0 e tavoli/10); gli altri tavoli sono tutti di livello molto basso. Inoltre tutti i pit sono di livello 3. Questa istanza di test è ritenuta la più importante perché rispetta al meglio la distribuzione dei tavoli all'interno del casinò di Londra.\\
+   Questa istanza di test è stata ripetuta tre volte per 30 esecuzioni ciascuna.\\
+   I grafici sulle distribuzioni di giochi e livelli hanno confermato le premesse.
+   \begin{table}[!h]
+       \caption{Risultati del terzo test prestazionale}
+       \label{tab:test_3}
+       \begin{tabularx}{\textwidth}{|X|c|c|c|}
+           \hline
+           \thead{} & \thead{Test 1} & \thead{Test 2} & \thead{Test 3}\\
+           \hline
+           Presenza di Giovannino & 0 / 30 & 1 / 30 & 1 / 30 \\
+           \hline
+           Tempo di esecuzione medio & 6.043s & 5.541s	 & 5.307s \\
+           \hline
+           Percentuale di lavoratori iniziali &+71.0\%&+68.7\%&+68.7\% \\
+           \hline
+           Percentuale di lavoratori ottimizzati &+36.9\%&+37.9\%&+37.4\%
+           \\
+           \hline
+       \end{tabularx}
+   \end{table}%
+ \FloatBarrier
+\noindent
+L'analisi delle soluzioni non ammissibili non ha rivelato criticità, in quanto sono dovute a un input iniziale non ben distribuito.
+\subsection{Conclusioni}
+L'analisi delle soluzioni (ammissibili e non) prodotte dall'algoritmo è stata, in conclusione, soddisfacente. \\
+L'algoritmo rispetta sempre i vincoli imposti dal problema e crea delle soluzioni buone sotto i seguenti punti di vista:
+\begin{enumerate}
+    \item Dopo che un lavoratore è stato in pausa, l'algoritmo prioritizza il suo rientro nello scheduling, evitando di lasciarlo in pausa per più turni consecutivi.
+    \item I turni dei lavoratori sono solitamente di tre o quattro scaglioni consecutivi; trovare cinque scaglioni consecutivi è raro (con un numero di lavoratori congruo).
+    \item Quando un lavoratore è schedulato per un turno in un certo tavolo, viene schedulato per quel tavolo anche nei turni immediatamente successivi per limitarne gli eccessivi spostamenti.
+    \item A pari disponibilità di due lavoratori per una postazione, viene sempre scelto il lavoratore con il livello più adatto a ricoprire la posizione.
+\end{enumerate}
+Nonostante siano stati individuati dei limiti per l'algoritmo, essi sono stati ritenuti accettabili. Bisogna infatti ricordare che si tratta di un algoritmo euristico volto a trovare uno scheduling iniziale ammissibile che faccia da base ad altri algoritmi metaeuristici, quindi non solo per sua natura non può certamente trovare la soluzione ottima, ma anche gli è concesso di compiere scelte greedy che a posteriori si rivelano, a volte, poco oculate. Sarà compito di una futura metaeuristica sopperire alle mancanze del corrente algoritmo greedy.

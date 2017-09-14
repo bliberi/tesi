@@ -17,7 +17,6 @@ tempo, visto come risorsa (scarsa) da allocare in modo ottimo a determinate atti
 Una soluzione di un problema di scheduling prende il nome di \textit{schedule}. In termini generali,
 una schedule è una descrizione completa dell'utilizzo temporale dei \task\ che devono essere eseguiti dagli \items; nella risoluzione di un problema di schedulazione siamo interessati a schedule ammissibili, cioè che rispettino tutti i vincoli impliciti in qualsiasi problema di scheduling, quali ad esempio che un \task\ non può essere occupato da due \items\ contemporaneamente o che un \items\ non possa essere assegnato a due \task, ma anche altri vincoli determinati dal problema specifico. \\
 I vincoli all'interno di un problema di scheduling vengono classificati all'interno di due categorie:
-\newpage
 \begin{itemize}
     \item \textbf{Hard constraints:} sono i vincoli inviolabili per il problema, se uno di essi non viene rispettato all'interno di una soluzione, tale soluzione non è ammissibile. Sono vincoli dati dalla natura degli \items\ da schedulare o imposti da fattori esterni, come leggi in merito o regolamenti.
     \item \textbf{Soft constraints:} sono i vincoli che possono essere violati all'interno di una soluzione, producendo ciononostante una soluzione ammissibile. Sono vincoli legati al concetto di \textit{fairness}: produrre una soluzione ``fair'' consiste nel bilanciare il più possibile fra gli \items\ i \task\ o i \ttb\ ritenuti ``impopolari''.
