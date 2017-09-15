@@ -6,18 +6,47 @@
 \chapter{Conclusioni}
 \label{cap:conclusioni}
 %**************************************************************
-\intro{ riporta le conclusioni oggettive e soggettive a cui si è giunti per il progetto.}
-%**************************************************************
-\section{Consuntivo finale}
-
+\intro{Questo capitolo di chiusura alla relazione illustra le conclusioni a cui si è giunti al termine dello stage. Vengono riportate sia conclusioni oggettive, come il raggiungimento degli obiettivi, il soddisfacimento dei requisiti, l'attuazione dell'analisi dei rischi, sia conclusioni soggettive circa l'esperienza di stage svolta.}
 %**************************************************************
 \section{Raggiungimento degli obiettivi}
+Come riportato nella tabella riguardante gli {\hyperref[tab:obiettivi]{obiettivi da raggiungere a fine stage}} contenuta nel secondo capitolo, da piano di lavoro lo stage prevedeva il soddisfacimento di dieci obiettivi obbligatori, due desiderabili e due opzionali. \\
+Al termine dello stage sono riuscita a raggiungere tutti gli obiettivi obbligatori, ma solo il 50\% degli obiettivi desiderabili e opzionali. In particolare, non ho soddisfatto gli obiettivi 
+\begin{itemize}
+\item \textit{De2 - Esplorazione di altri contesti applicativi} 
+\item \textit{Op2 - Implementazione con AMPL (o altro linguaggio di modellazione matematica) del modello di programmazione lineare intera per la soluzione esatta del problema di scheduling}
+\end{itemize}
+\noindent
+a causa della mancanza di tempo. Infatti, oltre alle problematiche sorte durante il periodo di verifica, già descritte all'interno del {\hyperref[cap:verifica-validazione]{sesto capitolo}} e che mi hanno fatto investire quasi il doppio del tempo previsto da piano di lavoro nella verifica e nei test, anche il tempo necessario per l'estensione del framework aziendale e implementazione dell'applicazione con l'algoritmo euristico si è rivelato maggiore del previsto, sia 
+per una sottostima dell'impegno richiesto, sia soprattutto perché sono state incontrate delle difficoltà con l'integrazione dell'algoritmo greedy nel framework aziendale. Tali difficoltà, una volta esposte allo sviluppatore del framework, hanno indotto in una costruttiva discussione sulle scelte progettuali sia riguardanti il mio progetto che riguardanti il framework aziendale; tale discussione è risultata nella modifica della classe astratta \texttt{Greedy} da cui la classe \texttt{CasinoGreedy} ereditava, è stata quindi necessaria anche una sua parziale riprogettazione e reimplementazione. Le ore investite in più rispetto a quanto era stato pianificato per questa attività non sono state considerate una perdita da parte del tutor aziendale, in quanto è nell'interesse dell'azienda che il framework sia molto versatile nella risoluzione di problemi di ricerca operativa; l'aver evidenziato dei punti di miglioramento con l'applicazione ai problemi di scheduling è stato quindi un guadagno.
+%**************************************************************
+\section{Resoconto dell'analisi dei rischi}
+L'analisi dei rischi completa può essere trovata nella tabella riguardante l'{\hyperref[tab:rischi]{analisi preventiva dei rischi}} contenuta nel secondo capitolo.
+\begin{table}[!htb]
+    \caption{Attualizzazione dei rischi}
+    \label{tab:attualizzazione}
+    \begin{widepage}
+        \begin{tabularx}{\textwidth}{|X|c|X|}
+            
+            \hline
+            \thead{Rischio}  & \thead{Verificato}& \thead{Attualizzazione}\\
+            \hline \hline
+            Scelte di bad design nella progettazione del framework aziendale esistente, che possono rendere difficoltosa l'estensione.         & Sì      & Il template dell'algoritmo greedy si è rivelato effettivamente poco estendibile, ciò ha reso necessaria una parziale riprogettazione sia del framework sia dell'estensione da me prodotta. \\
+            \hline
+            Bug all'interno del framework poiché alcune sue parti si trovano ancora in fase di sviluppo. & No & La parte del framework utilizzata per l'algoritmo greedy di risoluzione per i problemi di scheduling era già stata abbondantemente testata, perciò non ci sono stati problemi di malfunzionamenti. \\
+            \hline
+            Difficoltà nel confrontarsi con algoritmi euristici e problemi di ricerca operativa di cui si ha conoscenza nulla/scarsa & No & Le basi fornite dall'università di ricerca operativa e algoritmi sono state più che sufficienti per non creare disorientamento studiando in maniera più approfondita gli argomenti dello stage. Non si sono dunque verificati ritardi sui tempi.\\
+            \hline
+        \end{tabularx}
+    \end{widepage}
+\end{table}%
+\FloatBarrier
+\noindent
 
 %**************************************************************
-\section{Attualizzazione dei rischi}
+\section{Valutazione personale e conoscenze acquisite}
+Dal punto di vista personale, svolgere e portare a termine questo progetto di stage è stato positivo. Ho trovato l'argomento dei problemi di scheduling che sono andata ad approfondire estremamente interessante, sia dal punto di vista teorico che dal punto di vista applicativo; inoltre una buona parte dell'implementazione del software che mi è stato richiesto di produrre era puramente algoritmica, che è l'aspetto dell'informatica che più mi appassiona e stimola. Essere quindi riuscita a produrre un software che rispettasse le specifiche, i vincoli e producesse un buono scheduling è stato un risultato molto soddisfacente.\\
+L'esperienza è stata positiva anche per quanto riguarda le conoscenze acquisite. Nonostante io non abbia dovuto apprendere da zero qualcosa di nuovo, se non l'utilizzo di Visual Studio, i fondamenti di Python per la scrittura dello script per l'esecuzione dei test e l'utilizzo di qualche libreria esterna all'interno del codice, approfondire la mia conoscenza in materia di problemi di scheduling, modellazione e algoritmi greedy fino ad averne una padronanza tale da produrre il software è stato impegnativo e interessante. \\
+Infine, valuto positivamente anche l'esperienza di inserimento all'interno dell'azienda, poiché lo stage si è svolto in un clima collaborativo e stimolante, in quanto tutti i membri del team si sono rivelati appassionati al progetto di cui fanno parte.\\ Ritengo quindi che svolgere lo stage presso \TS\ sia stato per me molto formativo.
 
 %**************************************************************
-\section{Conoscenze acquisite}
-
-%**************************************************************
-\section{Valutazione personale}
+\section{Sviluppi futuri}

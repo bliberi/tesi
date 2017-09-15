@@ -165,7 +165,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
     \end{figure}
     \FloatBarrier
     \noindent
-    Nel grafico a sinistra, si può notare come i lavoratori prodotti dall’input non fossero ben distribuiti per ogni tavolo; il grafico è rosso perché l’algoritmo non ha trovato una soluzione ammissibile, utilizzando Giovannino.\\
+    Nel grafico a sinistra, si può notare come i lavoratori prodotti dall’input non fossero ben distribuiti per ogni tavolo; il grafico è rosso perché l’algoritmo non ha trovato una soluzione ammissibile, utilizzando il dummy worker.\\
     Nel grafico a destra, invece, si può notare come i lavoratori prodotti dall’input fossero ben distribuiti per ogni tavolo; il grafico è verde perché l’algoritmo ha trovato una soluzione ammissibile.
    
    \subsection{Analisi dei risultati}
@@ -181,7 +181,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
                \hline
                \thead{} & \thead{Test 1} & \thead{Test 2} & \thead{Test 3}\\
                \hline
-               Presenza di Giovannino & 4 / 30 & 8 / 30 & 7 / 30 \\
+               Presenza del dummy worker & 4 / 30 & 8 / 30 & 7 / 30 \\
                \hline
                Tempo di esecuzione medio & 3.410s & 3.662s	 & 4.526s \\
                \hline
@@ -208,7 +208,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
            \hline
            \thead{} & \thead{Test 1} & \thead{Test 2} & \thead{Test 3}\\
            \hline
-           Presenza di Giovannino & 5 / 30 & 6 / 30 & 7 / 30 \\
+           Presenza del dummy worker & 5 / 30 & 6 / 30 & 7 / 30 \\
            \hline
            Tempo di esecuzione medio & 4.197s & 5.387s	 & 4.205s \\
            \hline
@@ -222,7 +222,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
    \FloatBarrier
    \noindent
    L'analisi delle soluzioni non ammissibili non ha rivelato criticità, in quanto sono dovute a un input iniziale non ben distribuito.\\
-   Tuttavia è stata osservata un'anomalia all'interno di una soluzione non ammissibile: i lavoratori 38 e 52 al tavolo BJ7 si alternano in modo anomalo e entrambi rimangono in pausa per moltissimi turni consecutivi. Ciò è dovuto al fatto che sono inspector di livello 1 e c'è solo un pit di livello 1. L'algoritmo preferisce mettere altri lavoratori meno qualificati nei pit di livello 2-3, perciò dopo che 38 o 52 vanno in pausa vengono raramente assegnati ad un altro pit. Ciò preclude loro la possibilità di tornare a lavorare in BJ7, perché dopo la pausa devono cambiare per forza tavolo. A ciò è dovuto anche l'utilizzo di Giovannino. Si riconosce il limite dell'euristica. \\
+   Tuttavia è stata osservata un'anomalia all'interno di una soluzione non ammissibile: i lavoratori 38 e 52 al tavolo BJ7 si alternano in modo anomalo e entrambi rimangono in pausa per moltissimi turni consecutivi. Ciò è dovuto al fatto che sono inspector di livello 1 e c'è solo un pit di livello 1. L'algoritmo preferisce mettere altri lavoratori meno qualificati nei pit di livello 2-3, perciò dopo che 38 o 52 vanno in pausa vengono raramente assegnati ad un altro pit. Ciò preclude loro la possibilità di tornare a lavorare in BJ7, perché dopo la pausa devono cambiare per forza tavolo. A ciò è dovuto anche l'utilizzo del dummy worker. Si riconosce il limite dell'euristica. \\
     
    \subsubsection{Terzo test prestazionale}
    Il test viene eseguito sulla seguente distribuzione dei livelli delle postazioni: i tavoli di livello alto (sotto il 3) sono limitati ad un numero basso (tra 0 e tavoli/10); gli altri tavoli sono tutti di livello molto basso. Inoltre tutti i pit sono di livello 3. Questa istanza di test è ritenuta la più importante perché rispetta al meglio la distribuzione dei tavoli all'interno del casinò di Londra.\\
@@ -235,7 +235,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
            \hline
            \thead{} & \thead{Test 1} & \thead{Test 2} & \thead{Test 3}\\
            \hline
-           Presenza di Giovannino & 0 / 30 & 1 / 30 & 1 / 30 \\
+           Presenza del dummy worker & 0 / 30 & 1 / 30 & 1 / 30 \\
            \hline
            Tempo di esecuzione medio & 6.043s & 5.541s	 & 5.307s \\
            \hline
