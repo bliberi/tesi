@@ -29,7 +29,7 @@ Alcuni casi d'uso possono essere associati ad un diagramma dei casi d'uso riport
 \subsection{Diagrammi dei casi d'uso}
 \begin{figure}[!h]
     \begin{widepage}
-        \includegraphics[width=17cm,keepaspectratio]{../immagini/usecase/System.png}
+        \includegraphics[width=\textwidth,keepaspectratio]{../immagini/usecase/System.png}
         \caption{Diagramma dei casi d'uso ad alto livello}
     \end{widepage}
 \end{figure}
@@ -169,56 +169,135 @@ Alcuni casi d'uso possono essere associati ad un diagramma dei casi d'uso riport
 \end{itemize}
 \clearpage
 %***********************************************************************
-\section{Tracciamento dei requisiti}
+\section{Requisiti}
 
-Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto è stata stilata la tabella che traccia i requisiti in rapporto agli use case.\\
-Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.\\
-Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
-\begin{enumerate}
-	\item[R =] requisito
-    \item[F =] funzionale
-    \item[Q =] qualitativo
-    \item[V =] di vincolo
-    \item[N =] obbligatorio (necessario)
-    \item[D =] desiderabile
-    \item[Z =] opzionale
-\end{enumerate}
-Nelle tabelle \ref{tab:requisiti-funzionali}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
+Sono riportati di seguito i requisiti individuati per il progetto con rispettivo codice identificativo, importanza e breve descrizione.
+\newline
+\begin{itemize}
+    \item \textbf{Codice identificativo:} \`e la sigla che identifica ogni requisito e rispetta la seguente notazione:
+    \begin{center}
+        R[Tipo][Importanza][Identificativo]
+    \end{center}
+    \textbf{Tipo:}
+    \begin{itemize}
+        \item \textbf{F:} requisito funzionale;
+        \item \textbf{V:} requisito di vincolo;
+        \item \textbf{Q:} requisito qualitativo;
+    \end{itemize}
+    \textbf{Importanza:}
+    \begin{itemize}
+        \item \textbf{O:} requisito obbligatorio;
+        \item \textbf{D:} requisito desiderabile;
+        \item \textbf{F:} requisito opzionale.
+    \end{itemize}
+    \textbf{Identificativo:} codice che identifica in modo univoco un requisito. Viene rappresentato con la notazione decimale puntata per rendere pi\`u intuibile la forma gerarchica.
+    \item \textbf{Descrizione:} indica testualmente la necessit\`a rappresentata dal requisito.
+\end{itemize}
+\noindent
+Nel {\hyperref[cap:conclusioni]{settimo capitolo}}
+è riportato un consuntivo che riporta quanti dei requisiti riportati di seguito sono stati soddisfatti nel corso dello stage.
 
-\newpage
-
-\begin{table}%
-\caption{Tabella del tracciamento dei requisti funzionali}
-\label{tab:requisiti-funzionali}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RFN-1     & L'interfaccia permette di configurare il tipo di sonde del test & UC1 \\
-\hline
-\end{tabularx}
+\subsection{Requisiti Funzionali}
+\begin{table}[!h]
+    \caption{Tabella dei requisiti funzionali}
+    \label{tab:req-fun-fr}
+    \begin{tabularx}{\textwidth}{|c|c|X|}
+        \hline
+        \thead{ID} & \thead{Importanza} & \thead{Descrizione}\\
+        \hline \hline
+        RFO1 & Obbligatorio & L'utente deve poter fornire l'input al programma. \\ \hline
+        RFO1.1 & Obbligatorio & L'utente deve poter fornire l'input circa gli \items\ al programma. \\ \hline
+        RFO1.2 & Obbligatorio & L'utente deve poter fornire l'input circa i \task\ al programma. \\ \hline
+        RFO1.3 & Obbligatorio & L'utente deve poter fornire l'input circa i \ttb\ al programma. \\ \hline    
+    \end{tabularx}
 \end{table}%
 
-\begin{table}%
-\caption{Tabella del tracciamento dei requisiti qualitativi}
-\label{tab:requisiti-qualitativi}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RQD-1    & Le prestazioni del simulatore hardware deve garantire la giusta esecuzione dei test e non la generazione di falsi negativi & - \\
-\hline
-\end{tabularx}
+\begin{table}[!h]
+    \begin{tabularx}{\textwidth}{|c|c|X|}
+        \hline
+        \thead{ID} & \thead{Importanza} & \thead{Descrizione}\\
+        \hline \hline
+            RFO2 & Obbligatorio & Il programma deve poter caricare l'input fornito dall'utente.\\ \hline
+            RFO2.1 & Obbligatorio & Se l'input non è corretto, il{\tiny } programma deve dare un messaggio di errore.\\ \hline
+            
+            RFO3 & Obbligatorio & L'utente deve scegliere la data per cui eseguire lo scheduling.\\ \hline
+            
+            RFD4 & Desiderabile & L'utente deve poter bloccare la produzione dello scheduling dopo un certo numero di turni.\\ \hline
+            
+            RFO5 & Obbligatorio & Il programma deve dedurre da che \ttb\ cominciare lo scheduling.\\ \hline
+            RFO5.1 & Obbligatorio & Se l'utente vuole produrre uno scheduling per un giorno diverso dal corrente, lo scheduling va cominciato dal primo \ttb.\\ \hline
+            RFO5.2 & Obbligatorio & Se l'utente vuole produrre uno scheduling per il giorno corrente e l'orario di inizio del primo \ttb\ non è ancora arrivato, lo scheduling va cominciato dal primo \ttb.\\ \hline
+            RFO5.3 & Obbligatorio & Se l'utente vuole produrre uno scheduling per il giorno corrente e i \ttb\ sono già cominciati, lo scheduling va cominciato dal \ttb\ successivo al corrente.\\ \hline
+            
+            RFO6 & Obbligatorio & Il programma deve produrre uno scheduling rispettando i vincoli imposti dal problema.\\ \hline
+            
+            RFO7 & Obbligatorio & Il programma deve produrre uno scheduling fair.\\ \hline
+            
+            RFO8 & Obbligatorio & Se non esiste una soluzione ammissibile, il programma deve comunque fornirne una con l'ausilio del Dummy Worker.\\ \hline
+            
+            RFO9 & Obbligatorio & Il programma deve compiere delle iterazioni migliorative e fornire più di uno scheduling.\\ \hline
+            RFO9.1 & Obbligatorio & Le iterazioni sono considerate migliorative se riducono il costo degli \items.\\ \hline
+            
+            RFO10 & Obbligatorio & Il programma deve essere flessibile circa la disponibilità dei \task. \\ \hline
+    \end{tabularx}
 \end{table}%
-
-\begin{table}%
-\caption{Tabella del tracciamento dei requisiti di vincolo}
-\label{tab:requisiti-vincolo}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RVO-1    & La libreria per l'esecuzione dei test automatici deve essere riutilizzabile & - \\
-\hline
-\end{tabularx}
+\clearpage
+\begin{table}[!h]
+    \begin{tabularx}{\textwidth}{|c|c|X|}
+        \hline
+        \thead{ID} & \thead{Importanza} & \thead{Descrizione}\\
+        \hline \hline
+        RFO11 & Obbligatorio & Il programma deve essere flessibile circa la disponibilità degli \items. \\ \hline
+         
+        RFO12 & Obbligatorio & Il programma deve creare un output per l'utente con gli scheduling prodotti. \\ \hline
+        
+        RFO13 & Obbligatorio & Il programma deve creare un output per l'utente con gli scheduling prodotti. \\ \hline
+        
+        RFF14 & Opzionale & Gli output devono avere facilitazioni all'uso per l'utente. \\ \hline
+        RFF14.1 & Opzionale & L'utente deve poter individuare facilmente le assegnazioni dello stesso \task. \\ \hline
+    \end{tabularx}
+\end{table}%
+\clearpage
+\subsection{Requisiti di Qualità}
+\begin{table}[!h]
+    \caption{Tabella dei requisiti di qualità}
+    \label{tab:req-q}
+    \begin{tabularx}{\textwidth}{|c|c|X|}
+        \hline
+        \thead{ID} & \thead{Importanza} & \thead{Descrizione}\\
+        \hline \hline
+        RQO1 & Obbligatorio & Deve essere fornito il manuale dello sviluppatore che descrive classi, metodi e funzionamento del software.\\
+        \hline
+        RQO2 & Obbligatorio & Deve essere fornito il manuale utente
+        per aiutare l'utente nell'utilizzo
+        dell'applicazione.\\
+        \hline
+        RQO3 & Obbligatorio & Devono essere fornite relazioni tecniche circa gli studi svolti.\\
+        \hline
+        RQO4 & Obbligatorio & Devono essere fornite relazioni tecniche circa i risultati ottenuti.\\
+        \hline
+        RQD5 & Desiderabile & Deve essere fornita una relazione circa l'esplorazione di altri contesti applicativi.\\
+        \hline
+    \end{tabularx}
+\end{table}%
+\FloatBarrier
+\subsection{Requisiti di Vincolo}
+\begin{table}[!h]
+    \caption{Tabella dei requisiti di vincolo}
+    \label{tab:req-vin}
+    \begin{tabularx}{\textwidth}{|c|c|X|}
+        \hline
+        \thead{ID} & \thead{Importanza} & \thead{Descrizione}\\
+        \hline \hline
+        RVO1 & Obbligatorio & Il framework per la risoluzione dei problemi di scheduling deve andare ad integrarsi al framework aziendale.\\
+        \hline
+        RVO2 & Obbligatorio & Il problema di scheduling specifico deve essere risolto utilizzando il framework aziendale esteso.\\
+        \hline
+        RVO3 & Obbligatorio & L'input e l'output devono esere gestiti tramite file xls.\\
+        \hline
+        RVF4 & Opzionale & Visualizzazione dell'output tramite HTML.\\
+        \hline 
+        RVF5 & Opzionale & Il modello deve essere implementato in AMPL.\\
+        \hline
+    \end{tabularx}
 \end{table}%

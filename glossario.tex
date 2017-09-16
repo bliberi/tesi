@@ -4,9 +4,6 @@
 %**************************************************************
 \renewcommand{\acronymname}{Acronimi e abbreviazioni}
 
-\newacronym[description={\glslink{apig}{Application Program Interface}}]
-    {api}{API}{Application Program Interface}
-
 \newacronym{uml}{UML}{Unified Modeling Language}
 
 \newacronym{ampl}{AMPL}{A Mathematical Programming Language}
@@ -17,14 +14,6 @@
 % Glossario
 %**************************************************************
 \renewcommand{\glossaryname}{Glossario}
-
-\newglossaryentry{apig}
-{
-    name=\glslink{api}{API},
-    text=Application Program Interface,
-    sort=api,
-    description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
-}
 
 \newglossaryentry{umlg}
 {
@@ -99,6 +88,15 @@
     sort=supply chain,
     description={La supply chain (in italiano, ``catena di distribuzione'') è il sistema di organizzazioni, persone, attività, informazioni e risorse coinvolte nel portare un prodotto o un servizio dal fornitore al cliente}
 }
+
+\newglossaryentry{dummy}
+{
+    name=Dummy worker,
+    text=Dummy Worker,
+    sort=dummy worker,
+    description={Nel campo degli algoritmi euristici e dei problemi di scheduling, aggiungere un Dummy Worker è una tecnica usata per produrre sempre una soluzione ammissibile, anche quando in realtà l'algoritmo euristico non riesce a trovarne una. Il Dummy Worker può essere assegnato senza alcun vincolo a qualsiasi \task\ durante qualsiasi \ttb, tuttavia inserirlo introduce una penalità altissima per la funzione obiettivo, di conseguenza viene introdotto in uno scheduling quando non c'è nessun'altra alternativa. Nello scheduling finale, il numero di \task\ non assegnati corrisponde al numero di \task\ assegnati al Dummy Worker\\}
+}
+
 
 \newglossaryentry{nphard}
 {
@@ -250,6 +248,14 @@
             \item livello applicazione, o \textit{business logic}:
             \item livello dati:
         \end{itemize}
+}}
+
+\newglossaryentry{design}
+{
+    name=Design pattern,
+    text=design pattern,
+    sort=design,
+    description={In informatica, per Design Pattern si intende un modello logico che rappresenta una soluzione progettuale generale ad un problema ricorrente. Durante le fasi di progettazione del software può essere utile applicare uno di questi modelli logici per risolvere un particolare problema che può presentarsi in più di una situazione.
 }}
 
 

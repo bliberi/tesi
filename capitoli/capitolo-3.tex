@@ -7,7 +7,7 @@
 \label{cap:definizione-problema}
 %**************************************************************
 
-\intro{Questo capitolo espone i risultati ottenuti durante i primi tre periodi previsti dal piano di lavoro; al suo interno viene quindi approfondito l'argomento dei problemi di scheduling e viene definito nei dettagli il problema da risolvere durante lo stage. Le informazioni qui presentate sono frutto di uno studio della letteratura di base per i problemi di scheduling: per la sua stesura sono stati consultati i paper ``Introduzione ai problemi di scheduling''\footcite{paper:intro-sched}, ``Modeling staff scheduling problems. A tutorial''\footcite{paper:staff-scheduling}, ``A Hybrid Heuristic Ordering and Variable Neighbourhood Search for the Nurse Rostering Problem''\footcite{paper:nurse-rostering}, ``A Hybrid Scatter Search Heuristic for Personalized Crew Rostering in the Airline Industry''\footcite{paper:crew-rostering} elencati all'interno della bibliografia.}\\
+\intro{Questo capitolo espone i risultati ottenuti durante i primi tre periodi previsti dal piano di lavoro; al suo interno viene quindi approfondito l'argomento dei problemi di scheduling e viene definito nei dettagli il problema da risolvere durante lo stage. Le informazioni qui presentate sono frutto di uno studio della letteratura di base per i problemi di scheduling: per la sua stesura sono stati consultati i paper ``Introduzione ai problemi di scheduling''\footcite{paper:intro-sched}, ``Modeling staff scheduling problems. A tutorial''\footcite{paper:staff-scheduling}, ``A Hybrid Heuristic Ordering and Variable Neighbourhood Search for the Nurse Rostering Problem''\footcite{paper:nurse-rostering}, ``A Hybrid Scatter Search Heuristic for Personalized Crew Rostering in the Airline Industry''\footcite{paper:crew-rostering}, ``Method for the shift design and personnel task scheduling problem''\footcite{paper:dummy} elencati all'interno della bibliografia.}\\
 
 %**************************************************************
 \section{Problemi di scheduling}
@@ -217,5 +217,19 @@ Nel dettaglio, l'algoritmo di risoluzione implementato per andare a creare la mi
     \begin{widepage}
         \includegraphics[width=14.9cm,keepaspectratio]{../immagini/algoritmo.png}
         \caption{Diagramma di attività per l'algoritmo greedy di risoluzione per i problemi di scheduling}
+    \end{widepage}
+\end{figure}
+\FloatBarrier
+\noindent
+Si presenta tuttavia un problema: nel caso in cui gli \items\ non siano abbastanza da coprire tutti i \task\ durante i \ttb, questo algoritmo si blocca e non produce alcuno scheduling. Sapendo che tramite l'euristica si vuole creare uno scheduling iniziale da ottimizzare poi tramite metodi metaeuristici, il non riuscire a produrre uno scheduling iniziale è disturbante. \\
+\\
+Nel paper \textit{``Method for the shift design and personnel task scheduling problem''}, per arrivare sempre a una soluzione ammissibile viene introdotto un \emph{\gls{dummy}}\glsfirstoccur
+, che viene poi eliminato tramite la Neighborhood Search (metaeuristica). \\
+\\
+L'algoritmo di risoluzione implementato viene quindi lievemente modificato, sostituendo al secondo punto ``Se esiste un \task\ con nessun \items\ disponibile per la schedulazione, il \task\ viene assegnato al Dummy Worker''.
+\begin{figure}[!h]
+    \begin{widepage}
+        \includegraphics[width=14.9cm,keepaspectratio]{../immagini/algoritmo_dummy.png}
+        \caption{Diagramma di attività per l'algoritmo greedy di risoluzione per i problemi di scheduling con aggiunta di Dummy Worker}
     \end{widepage}
 \end{figure}

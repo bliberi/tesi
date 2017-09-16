@@ -273,3 +273,53 @@
 }
 
 \newcommand{\classdesc}[2]{\item[\textbf{#1:}] #2}
+
+%****************************************************************
+%Scrittura di codice
+%****************************************************************
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=C,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3,
+    % new keywords color
+    classoffset=1,
+    morekeywords={preprocessCandidates},
+    keywordstyle=\color{WildStrawberry},
+    classoffset=2,
+    morekeywords={filterCandidate},
+    keywordstyle=\color{WildStrawberry},
+    classoffset=3,
+    morekeywords={stopConditions},
+    keywordstyle=\color{WildStrawberry},
+    classoffset=4,
+    morekeywords={ifCandidateFound},
+    keywordstyle=\color{WildStrawberry},
+    classoffset=5,
+    morekeywords={isFeasible},
+    keywordstyle=\color{WildStrawberry},
+    classoffset=6,
+    morekeywords={UNFEASIBLE},
+    keywordstyle=\color{dkgreen},
+    classoffset=7,
+    morekeywords={SUCCESS_RUN},
+    keywordstyle=\color{dkgreen},
+    classoffset=0% restore to default class if more customisations...
+}
