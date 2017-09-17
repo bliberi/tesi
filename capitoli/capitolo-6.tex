@@ -10,12 +10,12 @@
 %**************************************************************
 \section{Generazione degli input}
 Una volta accertatami che il comportamento della \emph{\gls{bus-logic}}\glsfirstoccur\ del software prodotto fosse corretto su piccoli input di prova, si è presentato il problema di testare l'applicazione su istanze di input più grandi e con più variabili. Da piano di lavoro, il tempo previsto per verifica, testing e analisi dei risultati era stabilito di 20 ore; tuttavia, è stato da subito chiaro che il processo di verifica sarebbe stato più complicato del previsto.\\
-Per eseguire test significativi in serie, era infatti necessario poter produrre automaticamente degli input su cui il software potesse elaborare per produrre scheduling: è stata quindi estesa la classe \texttt{Excel} per poter andare a modificare in scrittura i fogli xls di input. In un primo momento, si è provato a generare degli input randomici, ma tale soluzione si è rivelata problematica per due motivi: in primo luogo, gli input randomici non producevano praticamente mai delle soluzioni ammissibili in quanto spesso ci si trovava con un sbilanciamento postazioni/lavoratori; in secondo luogo, anche quando veniva (raramente) prodotta una soluzione ammissibile, tale soluzione non poteva essere rappresentativa di un buono scheduling in quanto non era sensata. Il problema principale da risolvere è quindi diventato \textit{come} generare degli input il più possibile vicini alla realtà che potessero produrre degli scheduling da analizzare.\\
+Per eseguire test significativi in serie, era infatti necessario poter produrre automaticamente degli input su cui il software potesse elaborare per produrre schedule: è stata quindi estesa la classe \texttt{Excel} per poter andare a modificare in scrittura i fogli xls di input. In un primo momento, si è provato a generare degli input randomici, ma tale soluzione si è rivelata problematica per due motivi: in primo luogo, gli input randomici non producevano praticamente mai delle soluzioni ammissibili in quanto spesso ci si trovava con un sbilanciamento postazioni/lavoratori; in secondo luogo, anche quando veniva (raramente) prodotta una soluzione ammissibile, tale soluzione non poteva essere rappresentativa di un buono scheduling in quanto non era sensata. Il problema principale da risolvere è quindi diventato \textit{come} generare degli input il più possibile vicini alla realtà che potessero produrre degli schedule da analizzare.\\
 Il problema è stato esposto al tutor aziendale, che ha approvato la modifica al piano di lavoro assegnando più ore alla verifica e al testing, tagliando su attività per il raggiungimento di requisiti desiderabili e opzionali, ritenendo più importante poter testare il software in maniera corretta e approfondita. \\
 \\
 Secondo le informazioni fornite dal casinò, gli input per essere realistici dovevano:
 \begin{itemize}
-    \item comprendere circa 30 postazioni aperte contemporaneamente, per un totale di 40 lavoratori attivi. Il totale dei lavori, per garantire quindi uno scheduling fair e rispettoso delle pause e dei vincoli previsti, doveva ammontare a circa il 33\%\ in più rispetto al numero di postazioni.
+    \item comprendere circa 30 postazioni aperte contemporaneamente, per un totale di 40 lavoratori attivi. Il totale dei lavori, per garantire quindi uno schedule fair e rispettoso delle pause e dei vincoli previsti, doveva ammontare a circa il 33\%\ in più rispetto al numero di postazioni.
     \item di tutte le postazioni aperte, alla maggior parte viene assegnato un livello basso e giochi comunemente conosciuti dai lavoratori, mentre le postazioni che richiedono un livello alto o giochi poco conosciuti sono meno.
     \item il livello dei lavoratori dipende dal tempo passato all'interno del casinò e dalle loro abilità, di conseguenze la maggior parte dei lavoratori è di livello intermedio, mentre sono pochi quelli di livello molto alto e molto basso.
     \item i giochi conosciuti dai lavoratori dipende dal loro livello: più un dealer è di livello alto, più giochi conosce; per quanto riguarda inspector e dealer-inspector, essi conoscono praticamente tutti i giochi.
@@ -96,7 +96,7 @@ Tutti i grafici presenti in questa sezione sono stati prodotti sul sito di Wolfr
              \centering
              \includegraphics[width=.49\textwidth]{../immagini/livelli_dealer.png}\hfil
              \includegraphics[width=.49\textwidth]{../immagini/livelli_insp.png}
-             \caption{Distribuzioni normali per i livelli dei lavoratori di lavoratori}
+             \caption{Distribuzioni normali per i livelli dei lavoratori}
          \end{widepage}
      \end{figure}
      \FloatBarrier
@@ -143,7 +143,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
     \end{figure}
     \FloatBarrier
     \noindent
-    Il terzo e ultimo grafico mostra la distribuzione della conoscenza dei giochi sui dealer, suddivisi per livello. Ricordando che la probabilità che un dealer conosca un gioco è direttamente proporzionale al suo livello secondo una distribuzione di Bernoulli (quindi, un livello 1 ha probabilità del 90\% di conoscere un gioco, livello 2 probabilità 80\%, etc..), su trenta esecuzioni dell’algoritmo sono state prodotte le seguenti distribuzioni, che confermano il modello probabilistico:
+    Il terzo e ultimo grafico mostra la distribuzione della conoscenza dei giochi sui dealer, suddivisi per livello. Ricordando che la probabilità che un dealer conosca un gioco è direttamente proporzionale al suo livello secondo una distribuzione di Bernoulli (quindi, un livello 1 ha probabilità del 90\% di conoscere un gioco, un livello 2 probabilità 80\%, etc..), su trenta esecuzioni dell’algoritmo sono state prodotte le seguenti distribuzioni, che confermano il modello probabilistico:
     \begin{figure}[!h]
         \centering
         \includegraphics[width=0.9\textwidth,keepaspectratio]{../immagini/distr_games.png}
@@ -152,13 +152,13 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
     \FloatBarrier
     \noindent
     
-    \paragraph{Exec n} Infine per ogni esecuzione viene creato un grafico (quindi in tutto, per un'esecuzione dello script, vengono creati trenta grafici) per mostrare la bontà degli input prodotti. Questi grafici mostrano il numero di lavoratori capaci di lavorare in ogni tavolo secondo quando prodotto dal livello probabilistico. Essi possono essere di due tipi:
+    \paragraph{Exec n} Infine per ogni esecuzione viene creato un grafico (quindi in tutto, per un'esecuzione dello script, vengono creati trenta grafici) per mostrare la bontà degli input prodotti; essi mostrano il numero di lavoratori capaci di lavorare in ogni tavolo secondo quando prodotto dal modello probabilistico e possono essere di due tipi:
     
     \begin{figure}[!h]
         \begin{widepage}
             \centering
-            \includegraphics[width=.49\textwidth]{../immagini/exec_0.png}\hfil
-            \includegraphics[width=.49\textwidth]{../immagini/exec_1.png}
+            \includegraphics[width=.47\textwidth]{../immagini/exec_0.png}\hfil
+            \includegraphics[width=.47\textwidth]{../immagini/exec_1.png}
             \caption{Grafici prodotti dai test: Exec n}
         \end{widepage}
     \end{figure}
@@ -221,7 +221,7 @@ Per eseguire i test in serie, è stato prodotto uno script Python che esegue tre
    \FloatBarrier
    \noindent
    L'analisi delle soluzioni non ammissibili non ha rivelato criticità, in quanto sono dovute a un input iniziale non ben distribuito.\\
-   Tuttavia è stata osservata un'anomalia all'interno di una soluzione non ammissibile: i lavoratori 38 e 52 al tavolo BJ7 si alternano in modo anomalo e entrambi rimangono in pausa per moltissimi turni consecutivi. Ciò è dovuto al fatto che sono inspector di livello 1 e c'è solo un pit di livello 1. L'algoritmo preferisce mettere altri lavoratori meno qualificati nei pit di livello 2-3, perciò dopo che 38 o 52 vanno in pausa vengono raramente assegnati ad un altro pit. Ciò preclude loro la possibilità di tornare a lavorare in BJ7, perché dopo la pausa devono cambiare per forza tavolo. A ciò è dovuto anche l'utilizzo del dummy worker. Si riconosce il limite dell'euristica. \\
+   Tuttavia è stata osservata un'anomalia all'interno di una soluzione non ammissibile: due lavoratori che si alternano in modo anomalo su un tavolo rimanendo in pausa per moltissimi turni consecutivi. Ciò è dovuto al fatto che sono inspector di livello 1 e c'è solo un pit di livello 1. L'algoritmo preferisce mettere altri lavoratori meno qualificati nei pit di livello 2-3, perciò dopo che i due lavoratori in esame vanno in pausa vengono raramente assegnati ad un altro pit. Ciò preclude loro la possibilità di tornare a lavorare nell'unico pit di livello 1, perché dopo la pausa devono cambiare per forza postazione. A ciò è dovuto anche l'utilizzo del dummy worker. Si riconosce il limite dell'euristica. \\
     
    \subsubsection{Terzo test prestazionale}
    Il test viene eseguito sulla seguente distribuzione dei livelli delle postazioni: i tavoli di livello alto (sotto il 3) sono limitati ad un numero basso (tra 0 e tavoli/10); gli altri tavoli sono tutti di livello molto basso. Inoltre tutti i pit sono di livello 3. Questa istanza di test è ritenuta la più importante perché rispetta al meglio la distribuzione dei tavoli all'interno del casinò di Londra.\\

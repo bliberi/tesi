@@ -17,7 +17,7 @@
 %**************************************************************
 \section{Introduzione al progetto e contestualizzazione}
 Nel contesto del supply chain management in cui l’azienda opera, ha assunto una gran rilevanza l’organizzazione dei turni di singoli lavoratori o di squadre di lavoratori, in relazione alle competenze da loro possedute e richieste dai vari lavori da portare a compimento. \\ \\
-Il progetto di stage si prefiggeva l'obiettivo di estendere per la risoluzione dei problemi di scheduling il \emph{\gls{framework}}\glsfirstoccur\ aziendale e scrivere un'applicazione che lo utilizzasse andando a risolvere un problema specifico. L'obiettivo finale è utilizzare il framework per lo scheduling delle squadre dei meccanici, tuttavia è stato deciso che, per cominciare a studiare i problemi di scheduling e la fattibilità di risolverli con metodi \emph{\gls{algeur}}\glsfirstoccur\ e \emph{\gls{meteur}}\glsfirstoccur, fosse opportuno cominciare da un problema più semplice: l'organizzazione dei turni nei casinò. L'organizzazione dei turni dei meccanici sarà il naturale proseguimento di questo progetto, e la complessità maggiore dovuta allo schedulazione di individui singoli inseriti in un gruppo anch'esso da schedulare sarà supportata dal framework di base, robusto e già testato, sviluppato all'interno del progetto di stage. \\ 
+Il progetto di stage si prefiggeva l'obiettivo di estendere per la risoluzione dei problemi di scheduling il \emph{\gls{framework}}\glsfirstoccur\ aziendale e scrivere un'applicazione che lo utilizzasse, andando a risolvere un problema specifico. L'obiettivo finale è utilizzare il framework per lo scheduling delle squadre dei meccanici, tuttavia è stato deciso che, per cominciare a studiare i problemi di scheduling e la fattibilità di risolverli con metodi \emph{\gls{algeur}}\glsfirstoccur\ e \emph{\gls{meteur}}\glsfirstoccur, fosse opportuno cominciare da un problema più semplice: l'organizzazione dei turni nei casinò. L'organizzazione dei turni dei meccanici sarà il naturale proseguimento di questo progetto, e la complessità maggiore dovuta allo schedulazione di individui singoli inseriti in un gruppo anch'esso da schedulare sarà supportata dal framework di base, robusto e già testato, sviluppato all'interno del progetto di stage. \\ 
 Il problema della schedulazione dei turni all'interno dei casinò è stato scelto come problema di partenza in quanto comunque di interesse per l'azienda, che ha contatti con un manager de ``The Hippodrome Casino'' di Londra, il quale ha sottoposto il problema in quanto, al momento, lo scheduling viene fatto completamente a mano, dovendo tenere conto di numerosi vincoli e variabili. \\
 
 %**************************************************************
@@ -25,8 +25,8 @@ Il problema della schedulazione dei turni all'interno dei casinò è stato scelt
 È stato concordato con \TS\ che lo stage fosse svolto presso la sede operativa della stessa, ad Albignasego, affinché io potessi essere inserita nel contesto aziendale ed avere la possibilità di confrontarmi col resto del team di sviluppo in maniera immediata. \\
 Il tutor aziendale ha richiesto di scrivere ogni giorno un breve report delle attività svolte, delle difficoltà incontrate, degli obiettivi raggiunti e delle considerazioni personali su un documento condiviso su \emph{\gls{drive}}\glsfirstoccur, ha inoltre richiesto che ogni mattina prima di cominciare a lavorare si svolgesse una breve riunione con tutto il team per focalizzarsi sulle attività della giornata.\\
 Lo stage, che prevede una durata di 300 ore, è stato pianificato su una durata di poco meno di 9 settimane prevedendo in media 6.5 ore lavorative al giorno. Tale stima è stata effettuata al ribasso per permettere una certa flessibilità per quanto riguarda l'orario di lavoro e/o eventuali giorni liberi che avrei potuto prendere per impegni universitari; l'orario di lavoro invece è stato stabilito dal lunedì al venerdì, dalle 9.00 alle 18.00 con un'ora di pausa pranzo. \\
-Prima dell'inizio dello stage \TS\ ha redatto un piano di lavoro in cui sono stati fissati gli obiettivi e la pianificazione settimanale per lo stage, che vengono illustrati nei paragrafi ``Obiettivi'' e ``Pianificazione'' di questo capitolo. \\
-Per quanto riguarda i vincoli tecnologici, essi saranno trattati nel paragrafo ``Ambiente di lavoro'' di questo capitolo.
+Prima dell'inizio dello stage \TS\ ha redatto un piano di lavoro in cui sono stati fissati gli obiettivi e la pianificazione settimanale per lo stage, che vengono illustrati nei paragrafi \textit{``2.3 - Obiettivi''} e \textit{``2.4 - Pianificazione''} di questo capitolo. \\
+Per quanto riguarda i vincoli tecnologici, essi saranno trattati nel paragrafo \textit{``2.5 - Ambiente di lavoro''} di questo capitolo.
 %**************************************************************
 \section{Obiettivi}
 Sono riportati di seguito gli obiettivi fissati per lo stage con rispettivo identificativo, importanza e breve descrizione. \\
@@ -173,13 +173,13 @@ Di seguito vengono riportate in dettaglio le attività previste per ogni periodo
 \begin{figure}[!h]
     \begin{widepage}
     \includegraphics[width=14.9cm,keepaspectratio]{../immagini/pdp_1.png}
-    \caption{Diagramma di Gantt per il piano di lavoro, settimane 1-5}
+    \caption{\emph{\gls{gantt}}\glsfirstoccur\ per il piano di lavoro, settimane 1-5}
     \end{widepage}
 \end{figure}
 \begin{figure}[!h]
     \begin{widepage}
     \includegraphics[width=14.9cm,keepaspectratio]{../immagini/pdp_2.png}
-    \caption{Diagramma di Gantt per il piano di lavoro, settimane 5-9}
+    \caption{\emph{\gls{gantt}}\glsfirstoccur\ per il piano di lavoro, settimane 5-9}
     \end{widepage}
 \end{figure}
 
@@ -187,12 +187,12 @@ Di seguito vengono riportate in dettaglio le attività previste per ogni periodo
 %**************************************************************
 \section{Ambiente di lavoro}
     \subsection{Metodologia di sviluppo}
-    La metodologia di sviluppo adottata in \TS\ non si riconduce ad un modello in particolare, nonostante presenti delle affinità sia con il \emph{\gls{mod-incr}}\glsfirstoccur\ che con il metodo \emph{\gls{agile}}\glsfirstoccur\ di tipo \emph{\gls{scrum}}\glsfirstoccur. Infatti, per la pianificazione del lavoro a lungo termine sono stati definite delle fasi, affini idealmente a degli incrementi, associate a \emph{\gls{milestone}}\glsfirstoccur\ ben definite; tuttavia all'interno di ogni incremento l'approccio allo sviluppo diventa più simile al metodo agile, in quanto il Project Manager, ma anche i membri del team di sviluppo stesso, ad inserire e assegnare/assegnarsi i task del backlog. Affine al metodo scrum è anche il controllo quotidiano dell'avanzamento dei lavori rappresentato dalla breve riunione mattutina con tutti i membri del team. \\
+    La metodologia di sviluppo adottata in \TS\ non si riconduce ad un modello in particolare, nonostante presenti delle affinità sia con il \emph{\gls{mod-incr}}\glsfirstoccur\ che con il metodo \emph{\gls{agile}}\glsfirstoccur\ di tipo \emph{\gls{scrum}}\glsfirstoccur. Infatti, per la pianificazione del lavoro a lungo termine sono stati definite delle fasi, affini idealmente a degli incrementi, associate a \emph{\gls{milestone}}\glsfirstoccur\ ben definite; tuttavia all'interno di ogni incremento l'approccio allo sviluppo diventa più simile al metodo agile, in quanto il Project Manager, ma anche i membri del team di sviluppo stesso,  inseriscono e assegnano/si assegnano i task del backlog. Affine al metodo scrum è anche il controllo quotidiano dell'avanzamento dei lavori rappresentato dalla breve riunione mattutina con tutti i membri del team. \\
     Questa metodologia di sviluppo funziona all'interno di \TS\ poiché il team sviluppa un software per l'azienda stessa e quindi il colloquio e l'interazione fra sviluppatori e stakeholders è estremamente facilitato.
 
     \subsection{Gestione di progetto}
         \subsubsection{Versionamento}
-        Per quanto riguarda il versionamento, l'azienda ha un \emph{\gls{repository}}\glsfirstoccur\ \emph{\gls{git}}\glsfirstoccur\ privato su Bitbucket\footnote{{\color{blue} \url{https://bitbucket.org/}}}, a cui mi è stato dato l'accesso in lettura. Il ramo master di tale repository costituisce il codice del framework e delle applicazioni aggiornato all'ultima versione e funzionante; mentre per tutte le modifiche in via di sviluppo o le estensioni, i membri del team lavorano su dei branch personali. Anche per me ne è stato creato uno, nel quale ho potuto modificare il framework e scrivere la mia applicazione.
+        Per quanto riguarda il versionamento, l'azienda ha un \emph{\gls{repository}}\glsfirstoccur\ \emph{\gls{git}}\glsfirstoccur\ privato su Bitbucket\footnote{{\color{blue} \url{https://bitbucket.org/}}}, a cui mi è stato dato l'accesso in lettura. Il ramo master di tale repository costituisce il codice del framework e delle applicazioni aggiornato all'ultima versione e funzionante; mentre per tutte le modifiche in via di sviluppo o le estensioni i membri del team lavorano su dei branch personali. Anche per me ne è stato creato uno, all'interno del quale ho potuto modificare il framework e scrivere la mia applicazione.
         
         \subsubsection{Ticketing}
         Le attività da svolgere nel tempo medio-breve, che vanno a costituire il backlog, sono gestite tramite la piattaforma di project management ``Taiga''\footnote{{\color{blue} \url{https://taiga.io/}}}. I membri del team possono aggiungere attività al backlog che inizialmente ricadono nella categoria ``to do'', quando vengono assegnate a qualcuno che incomincia a occuparsene nella categoria ``In progress'' e poi successivamente in ``To test'' e ``Complete''. Alla stessa attività possono venire assegnati più membri del team.
@@ -207,7 +207,7 @@ Di seguito vengono riportate in dettaglio le attività previste per ogni periodo
     \subsection{Documentazione}
         Per quanto riguarda la produzione di documenti, manuali e relazioni richiesti, l'azienda non ha uno standard e mi ha dunque delegato la scelta di che software utilizzare per la loro produzione. 
         \subsubsection{Doxygen}
-        Per quanto riguarda la documentazione del codice, la mia scelta è ricaduta su Doxygen\footnote{{\color{blue} \url{http://www.stack.nl/~dimitri/doxygen/}}}. Doxygen è uno strumento per la generazione di documentazione a partire dal codice commentato per molti linguaggi di programmazione, fra i quali il C\texttt{++}. Genera documentazione sia in HTML che in \LaTeX, corredandola con diagrammi delle classi ed estraendo i commenti direttamenti dai sorgenti per commentare attributi e metodi delle classi.
+        Per quanto riguarda la documentazione del codice, la mia scelta è ricaduta su Doxygen\footnote{{\color{blue} \url{http://www.stack.nl/~dimitri/doxygen/}}}. Doxygen è uno strumento per la generazione di documentazione a partire dal codice commentato per molti linguaggi di programmazione, fra i quali il C\texttt{++}. Genera documentazione sia in HTML che in \LaTeX, corredandola con diagrammi delle classi ed estraendo i commenti direttamenti dai sorgenti per documentare attributi e metodi delle classi.
         \subsubsection{Diagrammi UML e Use Case}
         Per la progettazione è stato necessario modellare con UML, la mia scelta è ricaduta su Astah Professional\footnote{{\color{blue} \url{http://astah.net/editions/professional}}}, disponibile in versione gratuita grazie alla licenza accademica, perché identificato come il software più completo fra quelli dedicati. Astah Professional supporta sia i costrutti di UML 1.x che di UML 2.x e permette di modellare casi d'uso, i diagrammi delle classi, degli oggetti, delle attività e di sequenza.
 
@@ -219,7 +219,7 @@ Il framework aziendale da estendere è programmato in C\texttt{++} ed offre una 
 Il progetto originale è nato su Visual Studio, perciò è consigliato utilizzare tale \emph{\gls{ideg}}\glsfirstoccur\  per lo sviluppo in quanto i file di progetto con estensione \textit{.vcxproj} che contengono le informazioni necessarie alla compilazione sono già presenti.\\ Trattandosi comunque di codice scritto in C\texttt{++}, può essere utilizzato qualsiasi IDE ne fornisca il supporto.
 
 \subsubsection{Sistemi operativi}
-Poiché il progetto è nato su Visual Studio, la scelta più naturale per il sistema operativo di scelta è rappresentata da Windows; ciononostante i membri possono lavorare indifferentemente anche su Linux o Mac OS.
+Poiché il progetto è nato su Visual Studio, la scelta più naturale per il sistema operativo è rappresentata da Windows; ciononostante i membri possono lavorare indifferentemente anche su Linux o Mac OS.
 
 %**************************************************************
 \newpage

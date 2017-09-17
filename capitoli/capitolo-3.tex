@@ -11,9 +11,9 @@
 
 %**************************************************************
 \section{Problemi di scheduling}
-Con il termine \textit{scheduling} si intende una vasta classe di problemi decisionali, molto diversi tra loro per
+Con il termine \textit{problemi di scheduling} si intende una vasta classe di problemi decisionali, molto diversi tra loro per
 complessità e struttura, in cui riveste importanza il fattore
-tempo, visto come risorsa (scarsa) da allocare in modo ottimo a determinate attività; essi quindi ruotano attorno alle modalità di assegnamento all'interno di slot temporali (\ttb, ``Time Table blocks'') di una risorsa (\task) ad un'attività che deve essere effettuata (\items). \\
+tempo visto come risorsa (scarsa) da allocare in modo ottimo a determinate attività; essi quindi ruotano attorno alle modalità di assegnamento all'interno di slot temporali (\ttb, ``Time Table blocks'') di una risorsa (\task) ad un'attività che deve essere effettuata (\items). \\
 Una soluzione di un problema di scheduling prende il nome di \textit{schedule}. In termini generali,
 una schedule è una descrizione completa dell'utilizzo temporale dei \task\ che devono essere eseguiti dagli \items; nella risoluzione di un problema di schedulazione siamo interessati a schedule ammissibili, cioè che rispettino tutti i vincoli impliciti in qualsiasi problema di scheduling, quali ad esempio che un \task\ non può essere occupato da due \items\ contemporaneamente o che un \items\ non possa essere assegnato a due \task, ma anche altri vincoli determinati dal problema specifico. \\
 I vincoli all'interno di un problema di scheduling vengono classificati all'interno di due categorie:
@@ -21,7 +21,7 @@ I vincoli all'interno di un problema di scheduling vengono classificati all'inte
     \item \textbf{Hard constraints:} sono i vincoli inviolabili per il problema, se uno di essi non viene rispettato all'interno di una soluzione, tale soluzione non è ammissibile. Sono vincoli dati dalla natura degli \items\ da schedulare o imposti da fattori esterni, come leggi in merito o regolamenti.
     \item \textbf{Soft constraints:} sono i vincoli che possono essere violati all'interno di una soluzione, producendo ciononostante una soluzione ammissibile. Sono vincoli legati al concetto di \textit{fairness}: produrre una soluzione ``fair'' consiste nel bilanciare il più possibile fra gli \items\ i \task\ o i \ttb\ ritenuti ``impopolari''.
 \end{itemize}
-Degni di nota all'interno dell'insieme degli \textit{hard constraints} sono i \textit{sequence constraints}, che per ogni \ttb\ \textit{b} definiscono un insieme $\mathcal{T}$\ped{b} che possono seguire \textit{b} per un certo \items. \\ \\
+Degni di nota all'interno dell'insieme degli \textit{hard constraints} sono i \textit{sequence constraints}, che per ogni \ttb\ \textit{b} definiscono un insieme $\mathcal{T}$\ped{b} di \ttb\ che possono seguire \textit{b} per un certo \items. \\ \\
 \noindent
 Fra tutte le soluzioni ammissibili, chiaramente alcune sono migliori di altre. Il concetto di ``migliore'' viene definito grazie ai \textit{costi} associati ad ogni assegnamento di un \items\ ad un \task\ per un certo \ttb, e a delle \textit{penalità} associate ai \textit{soft constraints}. Ciò che mette insieme costi e penalità è la \textit{funzione obiettivo} il cui valore è un numero, chiamato obiettivo, confrontabile con quello delle altre soluzioni ammissibili per determinare la migliore, ovvero quella che utilizza gli \items\ il più efficientemente possibile.
 %**************************************************************
@@ -44,7 +44,7 @@ Fra tutte le soluzioni ammissibili, chiaramente alcune sono migliori di altre. I
         \paragraph{Sequence} $\mathcal{T}\ped{b}$ denota l'insieme di \ttb\ che possono essere schedulate dopo la \ttb\ \textit{b}. \[\sum_{b'\in T_b} x\ped{sb't} \ge x\ped{sbt}, \forall b,s,t\]
     \subsection{Obiettivo}
         \paragraph{Costi} il costo \textit{C} di una soluzione \textit{X} è la somma dei costi per ogni assegnamento: \[C=\sum_{s,b,t} x\ped{sbt}*c\ped{sbt}\]
-        \paragraph{Fairness} data la misura di popolarità \textit{u\ped{b}} e \textit{u\ped{t}} per ogni \ttb\ \textit{b}, per ogni \task\ \textit{t}; dato \textit{$\alpha$\ped{s}} coefficiente per tenere in conto il carico di lavoro del singolo \items. L'impopolarità della schedule per un \items\ \textit{s} può essere ora definita come:
+        \paragraph{Fairness} data la misura di popolarità \textit{u\ped{b}} e \textit{u\ped{t}} per ogni \ttb\ \textit{b}, per ogni \task\ \textit{t}; dato \textit{$\alpha$\ped{s}} coefficiente per tenere in conto il carico di lavoro del singolo \items, l'impopolarità della schedule per un \items\ \textit{s} può essere ora definita come:
         
         \[U\ped{s}=\alpha \ped{s} \sum_{b,t}( x\ped{sbt}*u\ped{b} + x\ped{sbt}*u\ped{t})\]
         possiamo stabilire una misura generale di fairness
@@ -58,7 +58,7 @@ Fra tutte le soluzioni ammissibili, chiaramente alcune sono migliori di altre. I
 \subsection{Analisi discorsiva}
 All'interno del casinò, l'orizzonte temporale da ricoprire con lo scheduling parte da mezzogiorno e finisce alle sei del mattino dopo. \\Esistono tre categorie di lavoratori: i \textit{dealer}, che possono lavorare nei tavoli; gli \textit{inspector}, che possono lavorare nei pit; i \textit{dealer-inspector} che possono lavorare in entrambe le tipologie di postazione. I dealer hanno un livello da 8 a 1 a seconda della loro esperienza: ogni tavolo richiede un certo livello di esperienza per potervi lavorare. Gli inspector hanno a loro volta un livello da 3 a 1: come succede per i tavoli, anche ogni pit può richiedere un certo livello di inspector.
 Inoltre ogni postazione richiede la conoscenza di un determinato gioco; i dealer e gli inspector differiscono per conoscenza di giochi, quindi ci sono postazioni in cui possono o non possono lavorare.\\
-Lo scheduler deve fornire uno scheduling in tempi brevi per assicurare un'utilità in decisioni volubili durante l'arco della giornata, poiché la richiesta di copertura dei tavoli dipende dai clienti che arrivano. \\Il turno di un lavoratore è diviso in scaglioni da 20 minuti, il numero totale di ore lavorate in una giornata dipende da ciascun lavoratore; inoltre ci possono essere degli straordinari che vengono decisi dal manager durante la giornata (i lavoratori possono accettarli o meno) fino a 8 ore.\\
+Lo scheduler deve fornire una schedule in tempi brevi per assicurare un'utilità in decisioni volubili durante l'arco della giornata, poiché la richiesta di copertura dei tavoli dipende dai clienti che arrivano. \\Il turno di un lavoratore è diviso in scaglioni da 20 minuti, il numero totale di ore lavorate in una giornata dipende da ciascun lavoratore; inoltre ci possono essere degli straordinari che vengono decisi dal manager durante la giornata (i lavoratori possono accettarli o meno) fino a 8 ore.\\
 Dopo cinque scaglioni consecutivamente lavorati, un lavoratore deve obbligatoriamente avere un turno di pausa, tuttavia è preferibile tenere la media di turni consecutivi intorno ai tre/quattro. Inoltre, dopo ogni pausa il lavoratore non può tornare a lavorare nella stessa postazione dove prestava servizio precedentemente.\\ L'obiettivo è coprire tutte le postazioni aperte con un lavoratore disponibile e bilanciare per quanto possibile lo scheduling in materia di turni consecutivi e postazioni in cui si lavora seduti o in piedi.
 
 \section{Modello per lo scheduling nei casinò}

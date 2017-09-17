@@ -20,8 +20,8 @@
 Il framework aziendale, come già accennato, offre una base per l'implementazione di algoritmi di ottimizzazione e consiste di librerie per l'utilizzo di grafi, di algoritmi euristici di tipo greedy e di meta-euristiche, ad esempio Tabu Search. 
 Per l'estensione del framework con la risoluzione dei problemi di scheduling, durante lo stage ho dovuto utilizzare la parte di libreria atta all'implementazione di algoritmi greedy; di seguito ne viene riportata la sua struttura e ne sono messi in evidenza i metodi di interesse.
 \paragraph{Algorithm} la classe \texttt{Algorithm} è un'interfaccia per l'implementazione di qualsiasi algoritmo. Ha un unico metodo virtuale puro, \texttt{run()}, che deve essere implementato nelle sue classi derivate con il corpo dell'algoritmo di risoluzione; esso deve ritornare un \texttt{RunStatus}: SUCCESS\textunderscore RUN, FAIL\textunderscore RUN, UNFEASIBLE.
-\paragraph{AlgorithmSol} è derivata da \texttt{Algorithm} ma ancora astratta in quanto non dà un'implementazione del metodo \texttt{run()}. Essa rapresenta un'ulteriore strato prima di poter implementare gli algoritmi, in quanto contiene un riferimento alla classe \texttt{Solution}. Il suo unico metodo \texttt{isSolImproving()} serve a confrontare gli objective di due \texttt{Solution} per stabilire quale delle due sia la migliore.
-\paragraph{Candidate} è interna a \texttt{Greedy} rappresenta un candidato da valutare all'interno del metodo \texttt{run()}. Va estesa con classi derivate che aggiungano le strutture dati. Una lista di tutti i candidati è campo dati di \texttt{Greedy}.
+\paragraph{AlgorithmSol} è derivata da \texttt{Algorithm} ma ancora astratta in quanto non dà un'implementazione del metodo \texttt{run()}. Essa rappresenta un ulteriore strato prima di poter implementare gli algoritmi, in quanto contiene un riferimento alla classe \texttt{Solution}. Il suo unico metodo \texttt{isSolImproving()} serve a confrontare gli objective di due \texttt{Solution} per stabilire quale delle due sia la migliore.
+\paragraph{Candidate} è interna a \texttt{Greedy} e rappresenta un candidato da valutare all'interno del metodo \texttt{run()}. Va estesa con classi derivate che aggiungano le strutture dati. Una lista di tutti i candidati è campo dati di \texttt{Greedy}.
 \paragraph{Greedy} è derivata di AlgorithmSol e rappresenta un template di implementazione per gli algoritmi greedy. Implementa il metodo \texttt{run()} con uno ``scheletro'' generale valido per tutti gli algoritmi di tipo greedy, applicando il \emph{\gls{design}}\glsfirstoccur\ ``Template Method''. Tutti gli altri metodi virtuali rappresentano gli hook per il metodo template e devono essere implementati nelle classi derivate a seconda di che algoritmo greedy si vuole implementare.
 \paragraph{Solution} è una classe astratta che rappresenta la soluzione trovata all'interno del metodo \texttt{run()}. Ha come unico campo dati \texttt{objective}, che è il risultato della funzione obiettivo implementata dentro il metodo virtuale puro \texttt{computeObjective()}. Nelle classi derivate bisogna implementare tale metodo, gli operatori di confronto, e aggiungere una struttura dati che permetta di mantenere memoria della soluzione.
 
@@ -55,7 +55,7 @@ return SUCCESS_RUN;
 \\
 Il suo funzionamento è il seguente:
 \begin{enumerate}
-    \item Il metodo \texttt{stopConditions()} torna \texttt{true} quando lo scheduling è stato riempito. In tal caso, il metodo run torna \texttt{SUCCESS\textunderscore RUN}. Se il metodo \texttt{StopConditions()} torna \texttt{false}, lo scheduling non è completo e quindi la \texttt{run()} continua a ciclare.
+    \item Il metodo \texttt{stopConditions()} torna \texttt{true} quando lo schedule è stato riempito. In tal caso, il metodo run torna \texttt{SUCCESS\textunderscore RUN}. Se il metodo \texttt{StopConditions()} torna \texttt{false}, lo schedule non è completo e quindi la \texttt{run()} continua a ciclare.
     \item Il metodo \texttt{preprocessCandidates()} permette di modificare per side effect due iteratori \texttt{list\textunderscore begin} e \texttt{list\textunderscore end} che determinano quale set dalla lista di candidati \texttt{candidate\textunderscore list} verranno valutati all'interno del ciclo.
     \item Per ogni candidato all'interno del set selezionato:
     \begin{enumerate}
@@ -64,7 +64,7 @@ Il suo funzionamento è il seguente:
         \item Se \texttt{solution\textunderscore try} è migliorante rispetto a  \texttt{solution\textunderscore best}, \texttt{solution\textunderscore try} diventa \texttt{solution\textunderscore best} e il candidato corrente diventa \texttt{chosen\textunderscore candidate}.
     \end{enumerate}
 \item Una volta valutati tutti i candidati, viene impostata \texttt{solution\textunderscore best} come soluzione contenuta in \texttt{AlgorithmSol}.
-\item Se è stato scelto un candidato, il metodo \texttt{ifCandidateFound()} permette di eseguire delle operazioni sul candidato successive alla sua assegnazione. Altrimenti, se nessun candidato è stato scelto, la soluzione non è ammissibile e il metodo run torna \texttt{UNFEASIBLE}. 
+\item Se è stato scelto un candidato, il metodo \texttt{ifCandidateFound()} permette di eseguire delle operazioni sul candidato successive alla sua assegnazione. Altrimenti, se nessun candidato è stato scelto, la soluzione non è ammissibile e il metodo torna \texttt{UNFEASIBLE}. 
 \item Torno al punto 1.
 \end{enumerate}
 \newpage
@@ -111,8 +111,8 @@ ExcelFormat offre funzioni per maneggiare i file XLS e i diversi worksheet prese
 \subsection{Boost}
 Boost  è una collezione di librerie open source che estendono le funzionalità del C\texttt{++}. In particolare, all'interno del progetto sono state usate le librerie:
 \begin{itemize}
-    \item \textbf{date\textunderscore time:} per gestire orari e date. È stata preferita a std::time in quanto offre più funzionalità ed è di utilizzo più immediato.
-    \item\textbf{multi\textunderscore array:} per gestire array dinamici multidimensionali. È stata preferita ad annidamenti di contenitori della libreria standard, come std::vector, in quanto ne offre un'implementazione più efficiente.
+    \item \textbf{date\textunderscore time:} per gestire orari e date. È stata preferita a \textit{std::time} in quanto offre più funzionalità ed è di utilizzo più immediato.
+    \item\textbf{multi\textunderscore array:} per gestire array dinamici multidimensionali. È stata preferita ad annidamenti di contenitori della libreria standard, come \textit{std::vector}, in quanto ne offre un'implementazione più efficiente.
 \end{itemize}
 %*************************************************************
 \section{Design pattern}
@@ -142,7 +142,7 @@ In questa sezione viene approfondita, tramite diagrammi UML e descrizione dettag
 \begin{itemize}
     \item \textbf{Attributi}
     \begin{itemize}
-        \item \texttt{available\textunderscore vec} vettore la cui dimensione è uguale al numero di \ttb. Ogni elemento segnala se l'\items\ è disponibile per il \ttb\ (valore -1) o no (valore -2).
+        \item \texttt{available\textunderscore vec} vettore la cui dimensione è uguale al numero di \ttb. Inizialmente ogni elemento segnala se l'\items\ è disponibile per il \ttb\ (valore -1) o no (valore -2); man mano che l'\items\ viene assegnato ai \task\ durante i \ttb, le celle vengono riempite con gli id dei \task\ svolti.
         \item \texttt{it\textunderscore current} iteratore per available\textunderscore vec, accede all'elemento corrispondente al corrente \ttb.
         \item \texttt{it\textunderscore overtime} iteratore per available\textunderscore vec, accede all'elemento corrispondente al \ttb\ in cui l'\items\ comincia a lavorare gli straordinari.
         \item \texttt{gainedPopularity} tiene memoria della popolarità accumulata dall'\items.
@@ -228,7 +228,7 @@ In questa sezione viene approfondita, tramite diagrammi UML e descrizione dettag
     \end{itemize}
 \end{itemize}
 
-\subsection{Gerarchia di Greedy}
+\subsection{SchedulingGreedy}
 \begin{figure}[!h]
     \begin{widepage}
         \centering
@@ -238,19 +238,18 @@ In questa sezione viene approfondita, tramite diagrammi UML e descrizione dettag
 \end{figure}
 \FloatBarrier
 \noindent
-\subsubsection{SchedulingGreedy}
 \begin{itemize}
     \item \textbf{Attributi}
     \begin{itemize}
-        \item \texttt{able\textunderscore worker} vettore di liste, ogni elemento del vettore rappresenta un \task\ e i nodi della lista a cui punta sono gli \items\ capaci di svolgere il \task. (funzione is\textunderscore able). Viene costruito una sola volta e costituisce le coppie \items - \task\ con cui vengono costruiti i candidati.
-        \item \texttt{available\textunderscore worker} vettore di liste, ogni elemento del vettore rappresenta un \task\ e i nodi della lista a cui punta sono gli \items\ disponibili a svolgere il \task. (funzione is\textunderscore available).
+        \item \texttt{able\textunderscore worker} vettore di liste, ogni elemento del vettore rappresenta un \task\ e i nodi della lista a cui punta sono gli \items\ capaci di svolgere il \task\ (funzione is\textunderscore able). Viene costruito una sola volta e costituisce le coppie \items -\task\ con cui vengono costruiti i candidati.
+        \item \texttt{available\textunderscore worker} vettore di liste, ogni elemento del vettore rappresenta un \task\ e i nodi della lista a cui punta sono gli \items\ disponibili a svolgere il \task\ (funzione is\textunderscore available).
         \item \texttt{ordered\textunderscore workstation} vettore dei \task\ ordinati per priorità.
         \item \texttt{currentShift} \ttb\ per il quale l'algoritmo sta schedulando.
     \end{itemize}
     \item \textbf{Metodi}
     \begin{itemize}
-        \item \texttt{updateAvailable} aggiorna available\textunderscore worker, eliminando gli \items non più disponibili.
-        \item \texttt{orderWorkstation} ordina il vettore ordered\textunderscore workstation tramite un counting sort basandosi sul numero di \items\ disponibili per il \task\ (available\textunderscore worker). Il \task\ con meno \items\ disponibili occupa la posizione 0, in fondo al vettore vengono posizionati i \task\ già assegnati.
+        \item \texttt{updateAvailable} aggiorna available\textunderscore worker, eliminando gli \items\ non più disponibili.
+        \item \texttt{orderWorkstation} ordina il vettore ordered\textunderscore workstation tramite un counting sort basandosi sul numero di \items\ disponibili per il \task\ (vettore available\textunderscore worker). Il \task\ con meno \items\ disponibili occupa la posizione 0, in fondo al vettore vengono posizionati i \task\ già assegnati.
         \item \texttt{stopConditions} controlla se SchedulingSolution è stata riempita completamente.
         \item \texttt{preprocessCandidates} fa un update di available\textunderscore worker, riordina ordered\textunderscore workstation e poi, basandosi sul \task\ da schedulare come successivo (il primo del vettore) individua il set di candidati da valutare all'interno di candidate\textunderscore list.
         \item \texttt{filterCandidate} controlla che l'\items\ candidato sia disponibile per il \task\ (available\textunderscore workers).
