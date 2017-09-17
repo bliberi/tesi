@@ -38,7 +38,7 @@ while(!stopConditions()){
             continue;
         solution_try = add(sol, candidate);
         solution_try.computeObjective();
-        if (isFeasible(solution_try) && (solution_try < solution_best)){
+        if (solution_try < solution_best){
             solution_best = move(solution_try);
             chosen_candidate = candidate;
         }  
@@ -61,7 +61,7 @@ Il suo funzionamento è il seguente:
     \begin{enumerate}
         \item Il metodo \texttt{filterCandidate()} permette di saltare la valutazione del candidato. Se ritorna \texttt{true}, si passa alla valutazione del candidato successivo (punto 3).
         \item Altrimenti, il metodo \texttt{add()} aggiunge a \texttt{solution\textunderscore try} il candidato e ne valuta l'obiettivo.
-        \item Il metodo \texttt{isFeasible()} valuta se \texttt{solution\textunderscore try} è ammissibile e se è migliorante rispetto a  \texttt{solution\textunderscore best}. In caso positivo, \texttt{solution\textunderscore try} diventa \texttt{solution\textunderscore best}.
+        \item Se \texttt{solution\textunderscore try} è migliorante rispetto a  \texttt{solution\textunderscore best}, \texttt{solution\textunderscore try} diventa \texttt{solution\textunderscore best} e il candidato corrente diventa \texttt{chosen\textunderscore candidate}.
     \end{enumerate}
 \item Una volta valutati tutti i candidati, viene impostata \texttt{solution\textunderscore best} come soluzione contenuta in \texttt{AlgorithmSol}.
 \item Se è stato scelto un candidato, il metodo \texttt{ifCandidateFound()} permette di eseguire delle operazioni sul candidato successive alla sua assegnazione. Altrimenti, se nessun candidato è stato scelto, la soluzione non è ammissibile e il metodo run torna \texttt{UNFEASIBLE}. 
@@ -94,33 +94,170 @@ Il suo funzionamento è il seguente:
 \end{figure}
 \FloatBarrier
 \noindent
-\paragraph{CasinoWorkstation}
-\paragraph{CasinoWorker}
-\paragraph{Dealer}
-\paragraph{Inspector}
-\paragraph{DealerInspector}
-\paragraph{Inspector}
-\paragraph{CasinoShift}
-\paragraph{Excel}
-\paragraph{Html}
-%**************************************************************
+\paragraph{CasinoWorkstation} classe derivata da \texttt{Task}, di cui costituisce una specializzazione. Aggiunge dei campi dati per indicare se la postazione è un tavolo o un pit, il gioco, e il livello.
+\paragraph{CasinoShift} classe derivata da \texttt{TTB}, di cui costituisce una specializzazione. Aggiunge un campo dati per indicare il nome del turno.
+\paragraph{CasinoWorker} classe derivata da \texttt{Item}, di cui costituisce una specializzazione. Aggiunge dei campi dati per indicare il livello del lavoratore e i giochi da lui conosciuti, oltre a implementare i metodi virtuali puri ereditati da \texttt{Item}. La classe viene approfondita nel paragrafo 6.1 di questo capitolo, relativo alla progettazione di dettaglio.
+\paragraph{Dealer} classe derivata da \texttt{CasinoWorker} che modella un dealer.
+\paragraph{Inspector} classe derivata da \texttt{CasinoWorker} che modella un inspector.
+\paragraph{DealerInspector} classe derivata da \texttt{CasinoWorker} che modella un dealer-inspector.
+\paragraph{Dummy} classe derivata da \texttt{CasinoWorker} che modella il Dummy Worker.
+\paragraph{Excel} classe che, utilizzando la libreria esterna \texttt{ExcelFormat}\footnote{{\color{blue} \url{https://www.codeproject.com/Articles/42504/ExcelFormat-Library}}} si occupa dell'input e output tramite fogli xls.
+\paragraph{Html} classe che produce l'output in html.
+%*************************************************************
 \section{Librerie}
-\paragraph{Excel}
-\paragraph{Boost}
-%**************************************************************
+\subsection{ExcelFormat}
+ExcelFormat è una libreria open source che permette di leggere, scrivere e modificare file \emph{\gls{xls}}\glsfirstoccur\ tramite C\texttt{++}. La scelta è ricaduta sull'utilizzare questa libreria per gestire l'input e output in quanto rappresentava un compromesso fra rapidità di programmazione (dato che l'interfaccia utente, come già detto, non era ritenuta prioritaria) e un'interfaccia con un certo grado di controllo dell'input, grazie alle funzioni di Excel, e quanto meno usabile lato utente per inserire gli input e visionare gli output. \\
+ExcelFormat offre funzioni per maneggiare i file XLS e i diversi worksheet presenti al loro interno, leggere e scrivere il contenuto delle celle, modificarne la formattazione. Tuttavia le funzioni che offre sono basilari, ad esempio non è possibile scrivere formule.
+\subsection{Boost}
+Boost  è una collezione di librerie open source che estendono le funzionalità del C\texttt{++}. In particolare, all'interno del progetto sono state usate le librerie:
+\begin{itemize}
+    \item \textbf{date\textunderscore time:} per gestire orari e date. È stata preferita a std::time in quanto offre più funzionalità ed è di utilizzo più immediato.
+    \item\textbf{multi\textunderscore array:} per gestire array dinamici multidimensionali. È stata preferita ad annidamenti di contenitori della libreria standard, come std::vector, in quanto ne offre un'implementazione più efficiente.
+\end{itemize}
+%*************************************************************
 \section{Design pattern}
 \paragraph{Template Method}
 \begin{figure}[!h]
     \centering
-        \includegraphics[width=10cm,keepaspectratio]{../immagini/templatemethod.jpg}
+        \includegraphics[width=12cm,keepaspectratio]{../immagini/templatemethod.png}
         \caption{Template Method}
 \end{figure}
+Il Template Method è un design pattern comportamentale che permette di definire lo scheletro di un algoritmo lasciando alle sottoclassi il compito di implementarne alcuni passi come preferiscono. In questo modo si può ridefinire e personalizzare parte del comportamento nelle varie sottoclassi senza dover riscrivere più volte il codice in comune e senza alterarne la struttura.\footcite{gof:dp} 
 %**************************************************************
+
 \section{Progettazione di dettaglio}
-In questa sezione illustrerò le classi principali del progetto, tralasciando
-quelle meno importanti.
-\subsection{Item}
-\subsection{SchedulingGreedy}
-%**************************************************************
-\section{Codifica}
-c++, html, javascript, screen della soluzione
+In questa sezione viene approfondita, tramite diagrammi UML e descrizione dettagliata di classi, metodi e attributi, la progettazione di dettaglio delle classi principali del progetto. Vengono tralasciate le classi più semplici o meno importanti.
+\newpage
+\subsection{Gerarchia di Item}
+\begin{figure}[!h]
+    \begin{widepage}
+        \centering
+        \includegraphics[width=12cm,keepaspectratio]{../immagini/progettazione/item.png}
+        \caption{Gerarchia della classe Item}
+    \end{widepage}
+\end{figure}
+\FloatBarrier
+\noindent
+\subsubsection{Item}
+\begin{itemize}
+    \item \textbf{Attributi}
+    \begin{itemize}
+        \item \texttt{available\textunderscore vec} vettore la cui dimensione è uguale al numero di \ttb. Ogni elemento segnala se l'\items\ è disponibile per il \ttb\ (valore -1) o no (valore -2).
+        \item \texttt{it\textunderscore current} iteratore per available\textunderscore vec, accede all'elemento corrispondente al corrente \ttb.
+        \item \texttt{it\textunderscore overtime} iteratore per available\textunderscore vec, accede all'elemento corrispondente al \ttb\ in cui l'\items\ comincia a lavorare gli straordinari.
+        \item \texttt{gainedPopularity} tiene memoria della popolarità accumulata dall'\items.
+        \item \texttt{gainedFairness} tiene memoria della fairness accumulata dall'\items.
+    \end{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{getCurrentShift} ritorna l'id del \ttb\ corrente.
+        \item \texttt{getConsecutiveShift} calcola e ritorna quanti \ttb\ consecutivi (senza pause) ha lavorato l'\items.
+        \item \texttt{howMuchOvertime} calcola e ritorna quanti \ttb\ di straordinari ha lavorato l'\items.
+        \item \texttt{addBreak} mette in pausa l'\items\ per il \ttb\ corrente (lascia it\textunderscore current a -1 e lo fa avanzare di uno).
+    \end{itemize}
+\item \textbf{Metodi virtuali puri}
+    \begin{itemize}
+        \item \texttt{computePopularity} per calcolare la popolarità accumulata da ogni \items.
+        \item \texttt{computeFairness} per calcolare la fairness accumulata da ogni \items.
+        \item \texttt{is\textunderscore able} verifica se un \items\ è capace di lavorare ad un certo \task.
+        \item \texttt{is\textunderscore available} verifica se un \items\ è disponibile per lavorare ad un certo \task.
+        \item \texttt{isQualified} verifica che la mansione di un \items\ sia compatibile con quella richiesta per un \task.
+        \item \texttt{assignWorker} per eseguire le operazioni che seguono un assegnamento sull'\items.
+    \end{itemize}
+\end{itemize}
+    
+\subsubsection{CasinoWorker}
+\begin{itemize}
+    \item \textbf{Attributi}
+    \begin{itemize}
+        \item \texttt{level} è il livello del lavoratore.
+        \item \texttt{games} vettore dei giochi conosciuti dal lavoratore.
+    \end{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{computePopularity} calcola la popolarità accumulata dal lavoratore, tenendo in conto il livello delle postazioni in cui il lavoratore è stato assegnato, quanti turni senza pause ha fatto, quali turni ha fatto e dove.
+        \item \texttt{computeFairness} calcola la fairness accumulata dal lavoratore, tenendo in conto se ha lavorato in postazioni dove si siede o si sta in piedi.
+        \item \texttt{is\textunderscore able} verifica se il lavoratore è in grado di lavorare in una certa postazione o no, in base alla sua conoscenza del gioco, al livello, alla mansione.
+        \item \texttt{is\textunderscore available} verifica se il lavoratore è disponibile a lavorare in una certa postazione, in base non solo alle sue capacità, ma anche dall'essere presente in sala, non dover andare in pausa, non dover rotare di postazione.
+        \item \texttt{assignWorker} esegue le operazioni che seguono l'assegnamento del lavoratore: aggiorna available\textunderscore vec e fa avanzare it\textunderscore current, calcola gainedPopularity e gainedFairness.
+    \end{itemize}
+    \item \textbf{Metodi virtuali puri}
+    \begin{itemize}
+        \item \texttt{checkLevel} esegue una verifica dell'input riguardante il livello.
+        \item \texttt{getLevel} ritorna il livello del lavoratore.
+    \end{itemize}
+\end{itemize}
+
+
+\subsubsection{Dealer}
+\begin{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{checkLevel} controlla che l'input riguardante il livello sia compreso fra 1 e 8. Se sì, ritorna il livello incrementato di due.
+        \item \texttt{getLevel} ritorna il livello decrementato di due.
+        \item \texttt{isQualified} ritorna true se la postazione è un tavolo, false altrimenti.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Inspector}
+\begin{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{checkLevel} controlla che l'input riguardante il livello sia compreso fra 1 e 3. Se sì, ritorna il livello.
+        \item \texttt{getLevel} ritorna il livello.
+        \item \texttt{isQualified} ritorna true se la postazione è un pit, false altrimenti.
+    \end{itemize}
+\end{itemize}
+\subsubsection{DealerInspector}
+\begin{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{checkLevel} controlla che l'input riguardante il livello sia 3. Ritorna sempre 3.
+        \item \texttt{getLevel} ritorna 3.
+        \item \texttt{isQualified} ritorna true sia se la postazione è un tavolo, sia se la postazione è un pit.
+    \end{itemize}
+\end{itemize}
+\subsubsection{Dummy}
+\begin{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{checkLevel} Ritorna sempre 1.
+        \item \texttt{getLevel} ritorna 1.
+        \item \texttt{isQualified} ritorna sempre true.
+        \item \texttt{is\textunderscore available} ritorna sempre true.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Gerarchia di Greedy}
+\begin{figure}[!h]
+    \begin{widepage}
+        \centering
+        \includegraphics[width=15.5cm,keepaspectratio]{../immagini/progettazione/greedy.png}
+        \caption{Gerarchia della classe Greedy}
+    \end{widepage}
+\end{figure}
+\FloatBarrier
+\noindent
+\subsubsection{SchedulingGreedy}
+\begin{itemize}
+    \item \textbf{Attributi}
+    \begin{itemize}
+        \item \texttt{able\textunderscore worker} vettore di liste, ogni elemento del vettore rappresenta un \task\ e i nodi della lista a cui punta sono gli \items\ capaci di svolgere il \task. (funzione is\textunderscore able). Viene costruito una sola volta e costituisce le coppie \items - \task\ con cui vengono costruiti i candidati.
+        \item \texttt{available\textunderscore worker} vettore di liste, ogni elemento del vettore rappresenta un \task\ e i nodi della lista a cui punta sono gli \items\ disponibili a svolgere il \task. (funzione is\textunderscore available).
+        \item \texttt{ordered\textunderscore workstation} vettore dei \task\ ordinati per priorità.
+        \item \texttt{currentShift} \ttb\ per il quale l'algoritmo sta schedulando.
+    \end{itemize}
+    \item \textbf{Metodi}
+    \begin{itemize}
+        \item \texttt{updateAvailable} aggiorna available\textunderscore worker, eliminando gli \items non più disponibili.
+        \item \texttt{orderWorkstation} ordina il vettore ordered\textunderscore workstation tramite un counting sort basandosi sul numero di \items\ disponibili per il \task\ (available\textunderscore worker). Il \task\ con meno \items\ disponibili occupa la posizione 0, in fondo al vettore vengono posizionati i \task\ già assegnati.
+        \item \texttt{stopConditions} controlla se SchedulingSolution è stata riempita completamente.
+        \item \texttt{preprocessCandidates} fa un update di available\textunderscore worker, riordina ordered\textunderscore workstation e poi, basandosi sul \task\ da schedulare come successivo (il primo del vettore) individua il set di candidati da valutare all'interno di candidate\textunderscore list.
+        \item \texttt{filterCandidate} controlla che l'\items\ candidato sia disponibile per il \task\ (available\textunderscore workers).
+        \item \texttt{ifCandidateFound} chiama assignWorker() sull'\items\ scelto per la schedulazione.
+    \end{itemize}
+\end{itemize}
+%*******************************************************
+\section{Codifica e sofware realizzato}
+L'implementazione in C\texttt{++} dell'architettura sopra descritta ha prodotto il software desiderato secondo le specifiche fornitemi.\\
+Il tutto è stato completato con la scrittura di alcune funzioni in Javascript per rendere più usabile lo scheduling in html fornito in output. In particolare, sono state rese evidenziabili le postazioni all'interno dello scheduling facendoci click sopra; inoltre la prima riga (contente i turni) e la prima colonna (contenente i lavoratori) della tabella dello scheduling sono state rese fisse, in quanto necessariamente la tabella è molto grande e serve quindi uno scroll sia orizzontale che verticale per essere visualizzata per intero.
