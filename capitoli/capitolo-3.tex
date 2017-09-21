@@ -7,7 +7,8 @@
 \label{cap:definizione-problema}
 %**************************************************************
 
-\intro{Questo capitolo espone i risultati ottenuti durante i primi tre periodi previsti dal piano di lavoro; al suo interno viene quindi approfondito l'argomento dei problemi di scheduling e viene definito nei dettagli il problema da risolvere durante lo stage. Le informazioni qui presentate sono frutto di uno studio della letteratura di base per i problemi di scheduling: per la sua stesura sono stati consultati i paper ``\citetitle{paper:intro-sched}'', ``\citetitle{paper:staff-scheduling}'', ``\citetitle{paper:nurse-rostering}'', ``\citetitle{paper:crew-rostering}'', ``\citetitle{paper:dummy}'' elencati all'interno della bibliografia.}\\
+\intro{Questo capitolo espone i risultati ottenuti durante i primi tre periodi previsti dal piano di lavoro; al suo interno viene quindi approfondito l'argomento dei problemi di scheduling e viene definito nei dettagli il problema da risolvere durante lo stage. Le informazioni qui presentate sono frutto di uno studio della letteratura di base per i problemi di scheduling: per la sua stesura sono stati consultati i paper \cite{paper:intro-sched,paper:staff-scheduling,paper:nurse-rostering,paper:crew-rostering,paper:dummy}.}\\
+    %\cite{paper:intro-sched}, \cite{paper:staff-scheduling}, \cite{paper:nurse-rostering}, \cite{paper:crew-rostering}, \cite{paper:dummy}.}\\
 %**************************************************************
 \section{Problemi di scheduling}
 Con il termine \textit{problemi di scheduling} si intende una vasta classe di problemi decisionali, molto diversi tra loro per
@@ -189,9 +190,9 @@ z\ped{s} = \text{numero di turni lavorati consecutivamente dal lavoratore s}
 \section{Algoritmi euristici di risoluzione per problemi di scheduling}
 Nella letteratura è difficile trovare un algoritmo che vada a creare uno scheduling iniziale per i problemi di schedulazione in maniera veloce, i paper si concentrano spesso su metaeuristiche che vadano infatti a migliorare una possibile soluzione iniziale già presente. \\
 \\
-Nel paper \citetitle{paper:crew-rostering} sono nominate tre diverse metodologie per trovare uno scheduling iniziale: la prima genera tutte le soluzioni in maniera random andando poi a tenere in considerazione solo le soluzioni ammissibili, la seconda genera le soluzioni euristicamente (ma non viene specificato come), la terza strategia genera invece una parte della soluzione utilizzando un’euristica e la restante parte in maniera randomica. Una volta ottenuta in questo modo una schedule iniziale, viene applicata una \emph{\gls{scatter}}\glsfirstoccur\ (metaeuristica).\\
+Nel paper \cite{paper:crew-rostering}\ sono nominate tre diverse metodologie per trovare uno scheduling iniziale: la prima genera tutte le soluzioni in maniera random andando poi a tenere in considerazione solo le soluzioni ammissibili, la seconda genera le soluzioni euristicamente (ma non viene specificato come), la terza strategia genera invece una parte della soluzione utilizzando un’euristica e la restante parte in maniera randomica. Una volta ottenuta in questo modo una schedule iniziale, viene applicata una \emph{\gls{scatter}}\glsfirstoccur\ (metaeuristica).\\
 \\
-Basandosi invece sul paper \citetitle{paper:nurse-rostering}, per creare la schedule iniziale viene utilizzato un algoritmo Greedy.
+Basandosi invece sul paper \cite{paper:nurse-rostering}, per creare la schedule iniziale viene utilizzato un algoritmo Greedy.
 L’obiettivo è ordinare, tramite una funzione di ordinamento euristica, tutti i turni secondo la difficoltà stimata di assegnazione o quanto è probabile che tale turno causi alta penalità. 
 Una volta che i turni sono stati ordinati, sono assegnati in ordine: in questa maniera, i turni più complicati sono assegnati per primi nel processo di costruzione della schedule. Uno alla volta, i turni sono assegnati a tutte le possibili infermiere e si calcola la penalità in cui si incorre compiendo tale assegnazione; il turno è assegnato quindi nella maniera che garantisca la penalità più bassa (le penalità consistono in turni unpopular, tipo turno di notte, al weekend, numero di persone capaci di fare quel lavoro e consistono in un \textit{weight} assegnato ad ogni turno). Si passa poi a valutare il turno successivo.\\
 Una volta ottenuta in questo modo una schedule iniziale, viene applicata una \emph{\gls{variable}}\glsfirstoccur\ (metaeuristica).
@@ -227,7 +228,7 @@ Nel dettaglio, l'algoritmo di risoluzione implementato per andare a creare la mi
 \noindent
 Si presenta tuttavia un problema: nel caso in cui gli \items\ non siano abbastanza da coprire tutti i \task\ durante i \ttb, questo algoritmo si blocca e non produce alcuno scheduling. Sapendo che tramite l'euristica si vuole creare uno scheduling iniziale da ottimizzare poi tramite metodi metaeuristici, il non riuscire a produrre uno scheduling iniziale potrebbe limitare l'efficacia delle stesse metaeuristiche. \\
 \\
-Nel paper \citetitle{paper:dummy}, per arrivare sempre a una soluzione ammissibile viene introdotto un \emph{\gls{dummy}}\glsfirstoccur
+Nel paper \cite{paper:dummy}, per arrivare sempre a una soluzione ammissibile viene introdotto un \emph{\gls{dummy}}\glsfirstoccur
 , che viene poi eliminato tramite la Neighborhood Search (metaeuristica). \\
 \\
 L'algoritmo di risoluzione implementato viene quindi lievemente modificato, sostituendo al secondo punto ``Se esiste un \task\ con nessun \items\ disponibile per la schedulazione, il \task\ viene assegnato al Dummy Worker''. Il risultante algoritmo è schematizzato in \hyperref[fig32]{Figura 3.2}.

@@ -111,7 +111,7 @@ Nella \hyperref[fig53]{Figura 5.3} viene presentata l'architettura progettata pe
 %*************************************************************
 \section{Librerie}
 \subsection{ExcelFormat}
-ExcelFormat (\citetitle{site:excel}) è una libreria open source che permette di leggere, scrivere e modificare file \emph{\gls{xls}}\glsfirstoccur\ tramite C\texttt{++}. La scelta è ricaduta sull'utilizzare questa libreria per gestire l'input e output in quanto rappresentava un compromesso fra rapidità di programmazione (dato che l'interfaccia utente, come già detto, non era ritenuta prioritaria) e un'interfaccia con un certo grado di controllo dell'input, grazie alle funzioni di Excel, e quanto meno usabile lato utente per inserire gli input e visionare gli output. \\
+\textit{ExcelFormat} \cite{site:excel} è una libreria open source che permette di leggere, scrivere e modificare file \emph{\gls{xls}}\glsfirstoccur\ tramite C\texttt{++}. La scelta è ricaduta sull'utilizzare questa libreria per gestire l'input e output in quanto rappresentava un compromesso fra rapidità di programmazione (dato che l'interfaccia utente, come già detto, non era ritenuta prioritaria) e un'interfaccia con un certo grado di controllo dell'input, grazie alle funzioni di Excel, e quanto meno usabile lato utente per inserire gli input e visionare gli output. \\
 ExcelFormat offre funzioni per maneggiare i file XLS e i diversi worksheet presenti al loro interno, leggere e scrivere il contenuto delle celle, modificarne la formattazione. Tuttavia le funzioni che offre sono basilari, ad esempio non è possibile scrivere formule.
 \subsection{Boost}
 Boost  è una collezione di librerie open source che estendono le funzionalità del C\texttt{++}. In particolare, all'interno del progetto sono state usate le librerie:
@@ -128,7 +128,7 @@ Boost  è una collezione di librerie open source che estendono le funzionalità 
         \includegraphics[width=12cm,keepaspectratio]{../immagini/templatemethod.png}
         \caption{Template Method}
 \end{figure}
-Il Template Method, la cui architettura è presentata nella \hyperref[fig54]{Figura 5.4}, è un design pattern comportamentale che permette di definire lo scheletro di un algoritmo lasciando alle sottoclassi il compito di implementarne alcuni passi come preferiscono. In questo modo si può ridefinire e personalizzare parte del comportamento nelle varie sottoclassi senza dover riscrivere più volte il codice in comune e senza alterarne la struttura. Tale design pattern è stato descritto per la prima volta in \citetitle{gof:dp}.
+Il Template Method, la cui architettura è presentata nella \hyperref[fig54]{Figura 5.4}, è un design pattern comportamentale che permette di definire lo scheletro di un algoritmo lasciando alle sottoclassi il compito di implementarne alcuni passi come preferiscono. In questo modo si può ridefinire e personalizzare parte del comportamento nelle varie sottoclassi senza dover riscrivere più volte il codice in comune e senza alterarne la struttura. Tale design pattern è stato descritto per la prima volta in \cite{gof:dp}.
 %**************************************************************
 
 \section{Progettazione di dettaglio}
