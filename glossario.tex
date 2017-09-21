@@ -10,6 +10,7 @@
 
 \newacronym{ide}{IDE}{Integrated Developement Environment}
 
+\newacronym{gui}{GUI}{Graphical User Interface}
 %**************************************************************
 % Glossario
 %**************************************************************
@@ -44,7 +45,7 @@
     name=Metodo esatto,
     text=metodo esatto,
     sort=metodo esatto,
-    description={I metodi di risoluzione dei problemi di ottimizzazione combinatoria ricadono in due categorie: i metodi esatti e metodi euristici (vd. \textit{Algoritmo euristico}). I primi sono metodi che riescono a fornire una soluzione ottima, a differenza dei secondi che riescono a fornire una soluzione ammissibile ma senza la garanzia che sia ottimale.\footcite{degio:dispensa}
+    description={I metodi di risoluzione dei problemi di ottimizzazione combinatoria ricadono in due categorie: i metodi esatti e metodi euristici (vd. \textit{Algoritmo euristico}). I primi sono metodi che riescono a fornire una soluzione ottima, a differenza dei secondi che riescono a fornire una soluzione ammissibile ma senza la garanzia che sia ottimale (\cite{degio:dispensa}).
     Esempi di algoritmi esatti sono il simplesso o il branch-and-bound}
 }
 
@@ -54,7 +55,7 @@
     text=euristici,
     sort=algoritmo euristico,
     description={I metodi di risoluzione dei problemi di ottimizzazione combinatoria ricadono in due categorie: i metodi esatti (vd. \textit{Metodo esatto}) e metodi euristici. In matematica e informatica un metodo euristico è un particolare tipo di algoritmo progettato per risolvere un problema di ricerca operativa più velocemente (qualora i metodi esatti siano troppo lenti) o per trovare una soluzione approssimata (qualora i metodi esatti falliscano nel trovare una soluzione esatta). Il risultato viene ottenuto cercando di equilibrare ottimalità, completezza, accuratezza e velocità di esecuzione. \\
-    Possono essere applicati quando la soluzione è data selezionando il miglior sottoinsieme di un dato insieme di elementi e sono costruttivi, ovvero partono da una soluzione vuota e ad ogni iterazione aggiungono un elemento applicando dei criteri di selezione\footcite{degio:dispensa}}
+    Possono essere applicati quando la soluzione è data selezionando il miglior sottoinsieme di un dato insieme di elementi e sono costruttivi, ovvero partono da una soluzione vuota e ad ogni iterazione aggiungono un elemento applicando dei criteri di selezione (\cite{degio:dispensa}})
 }
 
 \newglossaryentry{greedy}
@@ -118,7 +119,7 @@
         \item $\mathcal{NP-C}$ o NP-Completi - Sono i più difficili problemi nella classe $\mathcal{NP}$: se si trovasse un algoritmo in grado di risolvere in tempo polinomiale un qualsiasi problema in $\mathcal{NP-C}$, allora si potrebbe usarlo per risolvere in tempo polinomiale ogni problema in $\mathcal{NP}$. \\ In particolare, $\mathcal{NP-C} \subseteq\ \mathcal{NP}$.
         \item $\mathcal{H}$ o NP-Hard (\textit{Nondeterministic polynomial-time hard problems}) -  Classe di problemi (non limitata ai soli problemi di decisione, ma estesa anche ai problemi di ottimizzazione, ad esempio) che può essere definita informalmente come la classe dei problemi non meno difficili dei problemi $\mathcal{NP-C}$, che a loro volta sono per definizione i più difficili della classe $\mathcal{NP}$. Si noti che non è sempre vero che $\mathcal{H} \subseteq\ \mathcal{NP}$.
     \end{itemize}
-    (\cite{wiki:teoria-compl}.)
+    (\citetitle{wiki:teoria-compl}.)
     }
 }
 
@@ -167,6 +168,14 @@
     name=Git,
     text=Git,
     sort=git,
+    description={Software di controllo versione distribuito utilizzabile da interfaccia a riga di comando. Rispetto a Git è meno flessibile, lievemente più lento ma con comandi più intuitivi e semplici da imparare}
+}
+
+\newglossaryentry{mercurial}
+{
+    name=Mercurial,
+    text=Mercurial,
+    sort=mercurial,
     description={Software di controllo versione distribuito utilizzabile da interfaccia a riga di comando. È uno dei pù diffusi strumenti di controllo versione}
 }
 
@@ -183,7 +192,7 @@
     name=Agile,
     text=agile,
     sort=agile,
-    description={In ingegneria del software, è un insieme di metodi di sviluppo del software emersi a partire dai primi anni 2000 e fondati su insieme di principi comuni, direttamente o indirettamente derivati dai principi del ``Manifesto per lo sviluppo agile del software''\footcite{manifesto}. Tale manifesto si può riassumere in quattro punti:
+    description={In ingegneria del software, è un insieme di metodi di sviluppo del software emersi a partire dai primi anni 2000 e fondati su insieme di principi comuni, direttamente o indirettamente derivati dai principi del \citetitle{manifesto}. Tale manifesto si può riassumere in quattro punti:
         \begin{enumerate}
             \item le persone e le interazioni sono più importanti dei processi e degli strumenti;
             \item è più importante avere software funzionante che documentazione;
@@ -212,7 +221,7 @@
 \newglossaryentry{gantt}
 {
     name=Diagramma di Gantt,
-    text=Diagramma di Gantt,
+    text=diagramma di Gantt,
     sort=diagramma,
     description={Tipo di diagrammi molto usato per le attività di amministrazione di progetti poiché
         permettono una rappresentazione visuale di facile comprensione della durata delle attività
@@ -263,6 +272,23 @@
     name=XLS,
     text=XLS,
     sort=xls,
-    description={I file XLS sono fogli di calcolo creati con Microsoft Excel, la cui estensione è, per l'appunto, \textit{.xls}.
+    description={I file XLS sono fogli di calcolo creati con Microsoft Excel, la cui estensione è, per l'appunto, \textit{.xls}
 }}
+
+\newglossaryentry{scatter}
+{
+    name=Scatter Search,
+    text=Scatter Search,
+    sort=scatter,
+    description={La Scatter Search è una tecnica meta-euristica utilizzata per la soluzione di numerosi problemi di ottimizzazione, tra cui problemi di scheduling. Essa consiste nel mantenere un insieme di soluzioni candidate di buona qualità e molto diverse fra loro per poi ricombinarle linearmente per creare soluzioni migliori
+}}
+
+\newglossaryentry{variable}
+{
+    name=Variable Neighbourhood Search,
+    text=Variable Neighbourhood Search,
+    sort=variable,
+    description={La Variable Neighbourhood Search è una tecnica meta-euristica utilizzata per la soluzione di numerosi problemi di ottimizzazione, tra cui problemi di scheduling. Essa consiste di due fasi: nella prima fase, trova una soluzione che costituisca un ottimo locale; nella seconda, perturba tale soluzione per cambiare ``neighbourhood'' e scappare dall'ottimo individuato. Da questa soluzione trova un ulteriore ottimo locale e lo confronta con quello precedentemente trovato; se esso è migliorante, la Variable Neighbourhood Search comincia a esplorare il suo neighbourhood, altrimenti continua ad esplorare il precedente 
+}}
+
 

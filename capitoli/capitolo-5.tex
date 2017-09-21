@@ -7,18 +7,19 @@
 \label{cap:progettazione-codifica}
 %**************************************************************
 
-\intro{Questo capitolo presenta lo studio della parte di interesse del framework aziendale e l'attività di progettazione svolta per il progetto, approfondita con diagrammi UML. La progettazione viene scissa in due parti: progettazione dell'estensione del framework e progettazione dell'applicazione, per mantenere separate le due parti di software prodotte durante lo svolgimento dello stage. La progettazione è avvenuta seguendo un approccio top-down: dapprima sono state individuate le componenti ad alto livello e la loro interazione, fino all’individuazione dei singoli moduli e delle classi.}\\
+\intro{Questo capitolo presenta lo studio della parte di interesse del framework aziendale e l'attività di progettazione svolta per il progetto, approfondita con diagrammi UML. La progettazione viene organizzata in due parti: progettazione dell'estensione del framework e progettazione dell'applicazione, per mantenere separate le due parti di software prodotte durante lo svolgimento dello stage. La progettazione è avvenuta seguendo un approccio top-down: dapprima sono state individuate le componenti ad alto livello e la loro interazione, fino all’individuazione dei singoli moduli e delle classi.}\\
 
 %**************************************************************
 \section{Premessa: architettura e funzionamento \\ del framework}
 \begin{figure}[!h]
     \begin{widepage}
+        \label{fig51}
         \includegraphics[width=14.9cm,keepaspectratio]{../immagini/progettazione/framework.png}
         \caption{Architettura di dettaglio di parte del framework aziendale}
     \end{widepage}
 \end{figure}
 Il framework aziendale, come già accennato, offre una base per l'implementazione di algoritmi di ottimizzazione e consiste di librerie per l'utilizzo di grafi, di algoritmi euristici di tipo greedy e di meta-euristiche, ad esempio Tabu Search. 
-Per l'estensione del framework con la risoluzione dei problemi di scheduling, durante lo stage ho dovuto utilizzare la parte di libreria atta all'implementazione di algoritmi greedy; di seguito ne viene riportata la sua struttura e ne sono messi in evidenza i metodi di interesse.
+Per l'estensione del framework con la risoluzione dei problemi di scheduling, durante lo stage ho dovuto utilizzare la parte di libreria atta all'implementazione di algoritmi greedy; di seguito ne viene riportata la sua struttura e ne sono messi in evidenza i metodi di interesse. L'architettura è mostrata in \hyperref[fig51]{Figura 5.1}.
 \paragraph{Algorithm} la classe \texttt{Algorithm} è un'interfaccia per l'implementazione di qualsiasi algoritmo. Ha un unico metodo virtuale puro, \texttt{run()}, che deve essere implementato nelle sue classi derivate con il corpo dell'algoritmo di risoluzione; esso deve ritornare un \texttt{RunStatus}: SUCCESS\textunderscore RUN, FAIL\textunderscore RUN, UNFEASIBLE.
 \paragraph{AlgorithmSol} è derivata da \texttt{Algorithm} ma ancora astratta in quanto non dà un'implementazione del metodo \texttt{run()}. Essa rappresenta un ulteriore strato prima di poter implementare gli algoritmi, in quanto contiene un riferimento alla classe \texttt{Solution}. Il suo unico metodo \texttt{isSolImproving()} serve a confrontare gli objective di due \texttt{Solution} per stabilire quale delle due sia la migliore.
 \paragraph{Candidate} è interna a \texttt{Greedy} e rappresenta un candidato da valutare all'interno del metodo \texttt{run()}. Va estesa con classi derivate che aggiungano le strutture dati. Una lista di tutti i candidati è campo dati di \texttt{Greedy}.
@@ -70,7 +71,9 @@ Il suo funzionamento è il seguente:
 \newpage
 %**************************************************************
 \section{Progettazione dell'estensione del framework}
+Nella \hyperref[fig52]{Figura 5.2} viene presentata l'architettura progettata per l'estensione del framework.
 \begin{figure}[!h]
+    \label{fig52}
     \begin{widepage}
         \includegraphics[width=14.9cm,keepaspectratio]{../immagini/progettazione/estensione.png}
         \caption{Architettura generale dell'estensione al framework}
@@ -86,7 +89,9 @@ Il suo funzionamento è il seguente:
 \paragraph{SchedulingCandidate} classe che eredita da \texttt{Candidate} e modella i candidati da valutare all'interno del metodo \texttt{run()}. Ogni \texttt{SchedulingCandidate} è composto da una coppia \texttt{Item*}, \texttt{Task*} e indica che l'oggetto di tipo \texttt{Task} può essere assegnato all'oggetto di tipo \texttt{Item}.
 %**************************************************************
 \section{Progettazione dell'applicazione}
+Nella \hyperref[fig53]{Figura 5.3} viene presentata l'architettura progettata per la risoluzione del problema del casinò.
 \begin{figure}[!h]
+    \label{fig53}
     \begin{widepage}
         \includegraphics[width=14.9cm,keepaspectratio]{../immagini/progettazione/applicazione.png}
         \caption{Architettura generale dell'applicazione al problema del casinò}
@@ -101,12 +106,12 @@ Il suo funzionamento è il seguente:
 \paragraph{Inspector} classe derivata da \texttt{CasinoWorker} che modella un inspector.
 \paragraph{DealerInspector} classe derivata da \texttt{CasinoWorker} che modella un dealer-inspector.
 \paragraph{Dummy} classe derivata da \texttt{CasinoWorker} che modella il Dummy Worker.
-\paragraph{Excel} classe che, utilizzando la libreria esterna \texttt{ExcelFormat}\footnote{{\color{blue} \url{https://www.codeproject.com/Articles/42504/ExcelFormat-Library}}} si occupa dell'input e output tramite fogli xls.
+\paragraph{Excel} classe che, utilizzando la libreria esterna \texttt{ExcelFormat} si occupa dell'input e output tramite fogli xls.
 \paragraph{Html} classe che produce l'output in html.
 %*************************************************************
 \section{Librerie}
 \subsection{ExcelFormat}
-ExcelFormat è una libreria open source che permette di leggere, scrivere e modificare file \emph{\gls{xls}}\glsfirstoccur\ tramite C\texttt{++}. La scelta è ricaduta sull'utilizzare questa libreria per gestire l'input e output in quanto rappresentava un compromesso fra rapidità di programmazione (dato che l'interfaccia utente, come già detto, non era ritenuta prioritaria) e un'interfaccia con un certo grado di controllo dell'input, grazie alle funzioni di Excel, e quanto meno usabile lato utente per inserire gli input e visionare gli output. \\
+ExcelFormat (\citetitle{site:excel}) è una libreria open source che permette di leggere, scrivere e modificare file \emph{\gls{xls}}\glsfirstoccur\ tramite C\texttt{++}. La scelta è ricaduta sull'utilizzare questa libreria per gestire l'input e output in quanto rappresentava un compromesso fra rapidità di programmazione (dato che l'interfaccia utente, come già detto, non era ritenuta prioritaria) e un'interfaccia con un certo grado di controllo dell'input, grazie alle funzioni di Excel, e quanto meno usabile lato utente per inserire gli input e visionare gli output. \\
 ExcelFormat offre funzioni per maneggiare i file XLS e i diversi worksheet presenti al loro interno, leggere e scrivere il contenuto delle celle, modificarne la formattazione. Tuttavia le funzioni che offre sono basilari, ad esempio non è possibile scrivere formule.
 \subsection{Boost}
 Boost  è una collezione di librerie open source che estendono le funzionalità del C\texttt{++}. In particolare, all'interno del progetto sono state usate le librerie:
@@ -118,18 +123,21 @@ Boost  è una collezione di librerie open source che estendono le funzionalità 
 \section{Design pattern}
 \paragraph{Template Method}
 \begin{figure}[!h]
+    \label{fig54}
     \centering
         \includegraphics[width=12cm,keepaspectratio]{../immagini/templatemethod.png}
         \caption{Template Method}
 \end{figure}
-Il Template Method è un design pattern comportamentale che permette di definire lo scheletro di un algoritmo lasciando alle sottoclassi il compito di implementarne alcuni passi come preferiscono. In questo modo si può ridefinire e personalizzare parte del comportamento nelle varie sottoclassi senza dover riscrivere più volte il codice in comune e senza alterarne la struttura.\footcite{gof:dp} 
+Il Template Method, la cui architettura è presentata nella \hyperref[fig54]{Figura 5.4}, è un design pattern comportamentale che permette di definire lo scheletro di un algoritmo lasciando alle sottoclassi il compito di implementarne alcuni passi come preferiscono. In questo modo si può ridefinire e personalizzare parte del comportamento nelle varie sottoclassi senza dover riscrivere più volte il codice in comune e senza alterarne la struttura. Tale design pattern è stato descritto per la prima volta in \citetitle{gof:dp}.
 %**************************************************************
 
 \section{Progettazione di dettaglio}
 In questa sezione viene approfondita, tramite diagrammi UML e descrizione dettagliata di classi, metodi e attributi, la progettazione di dettaglio delle classi principali del progetto. Vengono tralasciate le classi più semplici o meno importanti.
 \newpage
 \subsection{Gerarchia di Item}
+Nella \hyperref[fig55]{Figura 5.5} viene presentata la progettazione di dettaglio della gerarchia con classe base \texttt{Item}.
 \begin{figure}[!h]
+    \label{fig55}
     \begin{widepage}
         \centering
         \includegraphics[width=12cm,keepaspectratio]{../immagini/progettazione/item.png}
@@ -229,7 +237,9 @@ In questa sezione viene approfondita, tramite diagrammi UML e descrizione dettag
 \end{itemize}
 
 \subsection{SchedulingGreedy}
+Nella \hyperref[fig56]{Figura 5.6} viene presentata la progettazione di dettaglio della gerarchia con classe base \texttt{Greedy}.
 \begin{figure}[!h]
+    \label{fig56}
     \begin{widepage}
         \centering
         \includegraphics[width=15.5cm,keepaspectratio]{../immagini/progettazione/greedy.png}

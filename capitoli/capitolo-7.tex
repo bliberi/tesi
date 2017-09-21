@@ -9,18 +9,17 @@
 \intro{Questo capitolo di chiusura alla relazione illustra le conclusioni a cui si è giunti al termine dello stage. Vengono riportate sia conclusioni oggettive, come il raggiungimento degli obiettivi, il soddisfacimento dei requisiti, l'attuazione dell'analisi dei rischi, sia conclusioni soggettive circa l'esperienza di stage svolta.}
 %**************************************************************
 \section{Raggiungimento degli obiettivi}
-Come riportato nella tabella riguardante gli {\hyperref[tab:obiettivi]{obiettivi da raggiungere a fine stage}} contenuta nel secondo capitolo, da piano di lavoro lo stage prevedeva il soddisfacimento di dieci obiettivi obbligatori, due desiderabili e due opzionali. \\
-Al termine dello stage sono riuscita a raggiungere tutti gli obiettivi obbligatori, ma solo il 50\% degli obiettivi desiderabili e opzionali. In particolare, non ho soddisfatto gli obiettivi 
+\label{setteuno}
+Come riportato nella \hyperref[tab:obiettivi]{Tabella 2.1} riguardante gli obiettivi da raggiungere a fine stage, da piano di lavoro lo stage prevedeva il soddisfacimento di dieci obiettivi obbligatori, due desiderabili e due opzionali. Al termine dello stage sono riuscita a raggiungere tutti gli obiettivi obbligatori, e il 50\% degli obiettivi desiderabili e opzionali. In particolare, non ho soddisfatto, a causa della mancanza di tempo, gli obiettivi 
 \begin{itemize}
 \item \textit{De2 - Esplorazione di altri contesti applicativi} 
 \item \textit{Op2 - Implementazione con AMPL (o altro linguaggio di modellazione matematica) del modello di programmazione lineare intera per la soluzione esatta del problema di scheduling}
 \end{itemize}
+
 \noindent
-a causa della mancanza di tempo. Infatti, oltre alle problematiche sorte durante il periodo di verifica, già descritte all'interno del {\hyperref[cap:verifica-validazione]{sesto capitolo}} e che mi hanno fatto investire quasi il doppio del tempo previsto da piano di lavoro nella verifica e nei test, anche il tempo necessario per l'estensione del framework aziendale e implementazione dell'applicazione con l'algoritmo euristico si è rivelato maggiore del previsto, sia 
-per una sottostima dell'impegno richiesto, sia soprattutto perché sono state incontrate delle difficoltà con l'integrazione dell'algoritmo greedy nel framework aziendale. Tali difficoltà, una volta esposte allo sviluppatore del framework, hanno indotto in una costruttiva discussione sulle scelte progettuali sia riguardanti il mio progetto che riguardanti il framework aziendale; tale discussione è risultata nella modifica della classe astratta \texttt{Greedy} da cui la classe \texttt{CasinoGreedy} ereditava, è stata quindi necessaria anche una sua parziale riprogettazione e reimplementazione. Le ore investite in più rispetto a quanto era stato pianificato per questa attività non sono state considerate una perdita da parte del tutor aziendale, in quanto è nell'interesse dell'azienda che il framework sia molto versatile nella risoluzione di problemi di ricerca operativa.\\
-\\
-Per quanto riguarda il soddisfacimento dei requisiti riportati nelle tabelle contenute nel quarto capitolo, ho ottenuto i seguenti risultati:
+Per quanto riguarda il soddisfacimento dei requisiti riportati nelle tabelle contenute nel  \hyperref[cap:analisi-requisiti]{Capitolo 4}, i risultati ottenuti sono riportati nella \hyperref[tab71]{Tabella 7.1}.
 \begin{table}[!htb]
+    \label{tab71}
     \caption{Soddisfacimento dei requisiti}
      \centering
         \begin{tabularx}{8.4cm}{|c|c|c|}
@@ -33,9 +32,12 @@ Per quanto riguarda il soddisfacimento dei requisiti riportati nelle tabelle con
             Requisiti opzionali     & 4  & 3 \\ \hline
         \end{tabularx}
 \end{table}
-%**************************************************************
+
+%*****************************************************************************************
 \section{Resoconto dell'analisi dei rischi}
-L'analisi dei rischi completa può essere trovata nella tabella riguardante l'{\hyperref[tab:rischi]{analisi preventiva dei rischi}} contenuta nel secondo capitolo.
+\label{settedue}
+Nella \hyperref[tab:attualizzazione]{Tabella 7.2} viene riportata l'attuazione dell'analisi dei rischi. \\
+L'analisi dei rischi completa può essere trovata nella \hyperref[tab:rischi]{Tabella 2.3}.
 \begin{table}[!htb]
     \caption{Attualizzazione dei rischi}
     \label{tab:attualizzazione}
@@ -45,22 +47,109 @@ L'analisi dei rischi completa può essere trovata nella tabella riguardante l'{\
             \hline
             \thead{Rischio}  & \thead{Verificato}& \thead{Attualizzazione}\\
             \hline \hline
-            Scelte di bad design nella progettazione del framework aziendale esistente, che possono rendere difficoltosa l'estensione.         & Sì      & Il template dell'algoritmo greedy si è rivelato effettivamente poco estendibile, ciò ha reso necessaria una parziale riprogettazione sia del framework sia dell'estensione da me prodotta. \\
+            Scelte di bad design nella progettazione del framework aziendale esistente, che possono rendere difficoltosa l'estensione.         & Sì      & Il template dell'algoritmo greedy si è rivelato in effetti poco estendibile, ciò ha reso necessaria una parziale riprogettazione sia del framework sia dell'estensione da me prodotta. \\
             \hline
-            Bug all'interno del framework poiché alcune sue parti si trovano ancora in fase di sviluppo. & No & La parte del framework utilizzata per l'algoritmo greedy di risoluzione per i problemi di scheduling era già stata abbondantemente testata, perciò non ci sono stati problemi di malfunzionamenti. \\
+            Bug all'interno del framework poiché alcune sue parti si trovano ancora in fase di sviluppo. & No & La parte del framework utilizzata per l'algoritmo greedy era già stata abbondantemente testata, perciò non ci sono stati problemi di malfunzionamenti. \\
             \hline
-            Difficoltà nel confrontarsi con algoritmi euristici e problemi di ricerca operativa di cui si ha conoscenza nulla/scarsa & No & Le basi fornite dall'università di ricerca operativa e algoritmi sono state più che sufficienti per non creare disorientamento studiando in maniera più approfondita gli argomenti dello stage. Non si sono dunque verificati ritardi sui tempi.\\
+            Difficoltà nel confrontarsi con algoritmi euristici e problemi di ricerca operativa di cui si ha conoscenza nulla/scarsa & No & Le basi fornite dall'università di Ricerca Operativa e Algoritmi sono state più che sufficienti per non creare disorientamento studiando in maniera più approfondita gli argomenti dello stage. Non si sono dunque verificati ritardi sui tempi.\\
             \hline
         \end{tabularx}
     \end{widepage}
 \end{table}%
+\newpage
+%**************************************************************
+\section{Consuntivo finale}
+\label{settetre}
+Prima dell'inizio dello stage era stata svolta un'attività di pianificazione per stabilire quali sarebbero state le attività svolte e quanto sarebbe stato il tempo da dedicare loro (tale pianificazione è stata riportata all'interno della \hyperref[tab:pdp]{Tabella 2.2}). \\
+\\
+Per quanto riguarda i primi tre periodi, le ore dedicate ad ogni attività sono state congrue a quelle preventivate, a meno del risparmio  di qualche ora; fanno eccezione le attività ``\textit{Ricerca ed analisi degli algoritmi più adatti}'', ``\textit{Individuazione dei blocchi di base da algoritmi pre-esistenti}'' e ``\textit{Integrazione dei blocchi}'', infatti, come accennato nel \hyperref[cap:definizione-problema]{Capitolo 3}, in letteratura è difficile trovare un algoritmo che vada a creare uno scheduling iniziale per i problemi di schedulazione in maniera veloce. \\
+\\
+Per quanto riguarda i periodi successivi, sussistono serie discrepanze per le attività di ``\textit{Implementazione}'', ``\textit{Integrazione dell'algoritmo nelle librerie dell'azienda}'' e ``\textit{Verifica e Testing}''.
+Infatti, oltre alle problematiche sorte durante il periodo di verifica, già descritte all'interno del {\hyperref[cap:verifica-validazione]{Capitolo 6}} e che mi hanno fatto investire quasi il doppio del tempo previsto da piano di lavoro nella verifica e nei test, anche il tempo necessario per l'estensione del framework aziendale e implementazione dell'applicazione con l'algoritmo euristico si è rivelato maggiore del previsto, sia 
+per una sottostima dell'impegno richiesto, sia soprattutto perché sono state incontrate delle difficoltà con l'integrazione dell'algoritmo greedy nel framework aziendale. Tali difficoltà, una volta esposte allo sviluppatore del framework, hanno indotto in una costruttiva discussione sulle scelte progettuali sia riguardanti il mio progetto che riguardanti il framework aziendale; tale discussione è risultata nella modifica della classe astratta \texttt{Greedy} da cui la classe \texttt{CasinoGreedy} ereditava, è stata quindi necessaria anche una sua parziale riprogettazione e reimplementazione. Le ore investite in più rispetto a quanto era stato pianificato per questa attività non sono state considerate una perdita da parte del tutor aziendale, in quanto è nell'interesse dell'azienda che il framework sia molto versatile nella risoluzione di problemi di Ricerca Operativa.\\
+\\
+Infine, le ore dedicate a ``\textit{Implementazione del modello in AMPL}'' e ``\textit{Confronto con i risultati dell'euristica e analisi delle presentazioni}'' ammontano a zero, in quanto si è preferito dare priorità all'attività di verifica e testing, come concordato col tutor aziendale.\\
+\\
+Il consuntivo finale completo, che confronta le ore preventivate e le ore effettivamente svolte, è riportato nella \hyperref[tab:pdp_fine]{Tabella 7.3}.\\
+
+\renewcommand{\arraystretch}{1.9}
+\begin{table}[!h]
+    \caption{Differenza ore consuntivo-preventivo}
+    \label{tab:pdp_fine}
+    \begin{widepage}
+        \begin{tabularx}{\textwidth}{|X|c|c|}
+            \hline
+            \thead{Attività} & \thead{Preventivo} & \thead{Consuntivo}\\
+            
+            \hline \hline
+            \multicolumn{3}{|l|}{\textbf{1. Analisi del problema}}\\
+            \hline
+            Assimilazione dei concetti di base per problemi di scheduling & 10 & 7\\
+            \hline
+            Definizione caratteristiche del problema di scheduling da risolvere & 10 & 6\\
+            
+            \hline \hline
+            \multicolumn{3}{|l|}{\textbf{2. Analisi dello stato dell'arte}}\\
+            \hline
+            Studio della letteratura di base su problemi di scheduling & 15 & 11\\
+            \hline
+            Ricerca ed analisi degli algoritmi più adatti & 15 & 7\\
+            
+            \hline \hline
+            \multicolumn{3}{|l|}{\textbf{3. Ideazione e progettazione di un algoritmo euristico}}\\
+            \hline
+            Individuazione dei blocchi di base da algoritmi pre-esistenti & 15 &7\\
+            \hline
+            Integrazione dei blocchi & 10 & 3\\
+            \hline
+            Definizione dell’algoritmo di soluzione & 15 & 11\\
+            
+            \hline \hline
+            \multicolumn{3}{|l|}{\textbf{4. Implementazione dell'algoritmo euristico}}\\
+            \hline
+            Studio ed assimilazione del framework aziendale & 15 &17\\
+            \hline
+            Progettazione dei moduli & 15 & 14\\
+            \hline
+            Implementazione & 40 & 68\\
+            
+            \hline \hline
+            \multicolumn{3}{|l|}{\textbf{5. Integrazione e test dell’algoritmo}}\\
+            \hline
+            Integrazione dell’algoritmo nelle librerie dell’azienda & 30 & 49\\
+            \hline
+            Test preliminari su istanze semplificate & 15 & 17\\
+            
+            \hline \hline
+            \multicolumn{3}{|l|}{\textbf{6. Confronto con tecniche esatte}}\\
+            \hline
+            Studio dei modelli in letteratura & 10 & 9\\
+            \hline
+            Definizione di un modello matematico & 10 & 9\\
+            \hline
+            Implementazione del modello in AMPL & 10 & 0\\
+            \hline
+            Confronto con i risultati dell'euristica e analisi delle presentazioni & 10 & 0\\
+            
+            \hline \hline 
+            \textbf{7. Verifica e testing} & 20 & 37\\
+            
+            \hline \hline
+            \textbf{8. Produzione di documenti, manuali e relazioni} & 35 & 28\\
+            \hline \hline
+            \multicolumn{1}{X|}{} & {\Large \textbf{300}} & {\Large \textbf{300}}\\
+            \cline{2-3}
+        \end{tabularx}
+    \end{widepage}
+\end{table}%
+
 \FloatBarrier
 \noindent
 
 %**************************************************************
 \section{Valutazione personale e conoscenze acquisite}
 Dal punto di vista personale, svolgere e portare a termine questo progetto di stage è stato positivo. Ho trovato l'argomento dei problemi di scheduling che sono andata ad approfondire estremamente interessante, sia dal punto di vista teorico che dal punto di vista applicativo; inoltre una buona parte dell'implementazione del software che mi è stato richiesto di produrre era puramente algoritmica, che è l'aspetto dell'informatica che più mi appassiona e stimola. Essere quindi riuscita a produrre un software che rispettasse le specifiche, i vincoli e producesse un buono schedule è stato un risultato molto soddisfacente.\\
-L'esperienza è stata positiva anche per quanto riguarda le conoscenze acquisite. Nonostante io non abbia dovuto apprendere da zero qualcosa di nuovo (se non l'utilizzo di Visual Studio, i fondamenti di Python per la scrittura dello script per l'esecuzione dei test e l'utilizzo di qualche libreria esterna all'interno del codice), approfondire la mia conoscenza in materia di problemi di scheduling, modellazione e algoritmi greedy fino ad averne una padronanza tale da produrre il software è stato impegnativo e interessante. \\
+L'esperienza è stata positiva anche per quanto riguarda le conoscenze acquisite. Nonostante io non abbia dovuto apprendere da zero qualcosa di nuovo (se non l'utilizzo di Visual Studio, i fondamenti di Python per la scrittura dello script per l'esecuzione dei test e l'utilizzo di qualche libreria esterna), approfondire la mia conoscenza in materia di problemi di scheduling, modellazione e algoritmi greedy fino ad averne una padronanza tale da produrre il software è stato impegnativo e interessante. \\
 Infine, valuto positivamente anche l'esperienza di inserimento all'interno dell'azienda, poiché lo stage si è svolto in un clima collaborativo e stimolante, in quanto tutti i membri del team si sono rivelati appassionati al progetto di cui fanno parte.\\ Ritengo quindi che svolgere lo stage presso \TS\ sia stato per me molto formativo.
 
 %**************************************************************

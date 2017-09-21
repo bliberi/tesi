@@ -11,7 +11,7 @@
 
 \section{Casi d'uso}
 I diagrammi dei casi d'uso (in inglese, \textit{Use Case Diagram}) sono diagrammi di tipo \gls{umlg} che servono a descrivere le interazioni fra il sistema software e gli utenti che lo utilizzano, mostrando l'insieme funzionalità esposte dal sistema dal punto di vista degli utenti. \\
-Poiché lo stage era incentrato sull'estensione del framework e lo sviluppo di un algoritmo euristico per la risoluzione dei problemi di scheduling, la prima parte del progetto non necessitava di esporre funzionalità all'utente. D'altro canto, una volta sviluppata l'applicazione per risolvere il problema specifico del casinò, avrei dovuto garantire dei servizi minimi all'utente per inserire l'input (informazioni circa le postazioni, i lavoratori, i turni, etc...) e mostrare l'output (lo scheduling prodotto). \\
+Poiché lo stage era incentrato sull'estensione del framework e lo sviluppo di un algoritmo euristico per la risoluzione dei problemi di scheduling, la prima parte del progetto non necessitava di esporre funzionalità all'utente. D'altro canto, una volta sviluppata l'applicazione per risolvere il problema specifico del casinò, avrei dovuto garantire dei servizi minimi all'utente per inserire l'input (informazioni circa le postazioni, i lavoratori, i turni) e mostrare l'output (lo scheduling prodotto). \\
 Per questo motivo i diagrammi dei casi d'uso risultano minimali e in numero ridotto.\\
 \\
 Ogni caso d'uso è classificato secondo la seguente convenzione:
@@ -27,8 +27,10 @@ Ogni caso d'uso è classificato secondo la seguente convenzione:
 Alcuni casi d'uso possono essere associati ad un diagramma dei casi d'uso riportante lo stesso titolo e codice.
 \clearpage
 \subsection{Diagrammi dei casi d'uso}
+La \hyperref[fig41]{Figura 4.1} presenta il diagramma dei casi d'uso generale.
 \begin{figure}[!h]
     \begin{widepage}
+        \label{fig41}
         \includegraphics[width=\textwidth,keepaspectratio]{../immagini/usecase/System.png}
         \caption{Diagramma dei casi d'uso ad alto livello}
     \end{widepage}
@@ -44,9 +46,10 @@ Alcuni casi d'uso possono essere associati ad un diagramma dei casi d'uso riport
 
 \subsection{UC2: Inserimento dati lavoratori}
 \label{UC2}
+La \hyperref[fig42]{Figura 4.2} presenta il diagramma dei casi d'uso relativo all'UC2.
 \begin{figure}[!h]
     \begin{widepage}
-    \def\svgwidth{\columnwidth}
+        \label{fig42}
     \includegraphics[width=14.9cm,keepaspectratio]{../immagini/usecase/UC2.png}
     \caption{UC2: Inserimento dati lavoratori}
     \end{widepage}
@@ -84,8 +87,9 @@ Alcuni casi d'uso possono essere associati ad un diagramma dei casi d'uso riport
 \clearpage
 \subsection{UC3: Inserimento dati postazioni}
 \label{UC3}
+La \hyperref[fig43]{Figura 4.3} presenta il diagramma dei casi d'uso relativo all'UC3.
 \begin{figure}[!h]
-    \def\svgwidth{\columnwidth}
+    \label{fig43}
     \includegraphics[width=\textwidth]{../immagini/usecase/UC3.png}
     \caption{UC3: Inserimento dati postazioni}
 \end{figure}
@@ -122,8 +126,9 @@ Alcuni casi d'uso possono essere associati ad un diagramma dei casi d'uso riport
 \end{itemize}
 \subsection{UC4: Inserimento dati turni}
 \label{UC4}
+La \hyperref[fig44]{Figura 4.4} presenta il diagramma dei casi d'uso relativo all'UC4.
 \begin{figure}[!h]
-    \def\svgwidth{\columnwidth}
+    \label{fig44}
     \includegraphics[width=\textwidth]{../immagini/usecase/UC4.png}
     \caption{UC4: Inserimento dati turni}
 \end{figure}
@@ -194,10 +199,11 @@ Sono riportati di seguito i requisiti individuati per il progetto con rispettivo
     \item \textbf{Descrizione:} indica testualmente la necessit\`a rappresentata dal requisito.
 \end{itemize}
 \noindent
-Nel {\hyperref[cap:conclusioni]{settimo capitolo}}
-è riportato un consuntivo che riporta quanti dei requisiti riportati di seguito sono stati soddisfatti nel corso dello stage.
+Nel paragrafo ``\hyperref[setteuno]{7.1 - Raggiungimento degli obiettivi}''
+è presente un consuntivo che riporta quanti dei requisiti elencati di seguito sono stati soddisfatti nel corso dello stage.
 
 \subsection{Requisiti Funzionali}
+I requisiti funzionali sono indicati nella \hyperref[tab:req-fun-fr]{Tabella 4.1}.
 \begin{table}[!h]
     \caption{Tabella dei requisiti funzionali}
     \label{tab:req-fun-fr}
@@ -259,6 +265,7 @@ Nel {\hyperref[cap:conclusioni]{settimo capitolo}}
 \end{table}%
 \clearpage
 \subsection{Requisiti di Qualità}
+I requisiti di qualità sono indicati nella \hyperref[tab:req-q]{Tabella 4.2}.
 \begin{table}[!h]
     \caption{Tabella dei requisiti di qualità}
     \label{tab:req-q}
@@ -282,6 +289,7 @@ Nel {\hyperref[cap:conclusioni]{settimo capitolo}}
 \end{table}%
 \FloatBarrier
 \subsection{Requisiti di Vincolo}
+I requisiti di vincolo sono indicati nella \hyperref[tab:req-vin]{Tabella 4.3}.
 \begin{table}[!h]
     \caption{Tabella dei requisiti di vincolo}
     \label{tab:req-vin}
