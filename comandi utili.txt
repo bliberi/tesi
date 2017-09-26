@@ -1,0 +1,13 @@
+GLOSSARIO:
+\emph{\gls{link}word}\glsfirstoccur
+
+CITAZIONE INLINE
+\cite{site:agile-manifesto}
+
+CITAZIONE A PIE' PAGINA
+citazione\footcite{womak:lean-thinking}
+
+PER LA COMPILAZIONE
+makeindex -s tesi.ist -t tesi.glg -o tesi.gls tesi.glo
+makeindex -s tesi.ist -t tesi.alg -o tesi.acr tesi.acn
+biber tesicompile-tesi.bat
